@@ -37,3 +37,6 @@ elm-package.json
 elm-stuff/
 # elm-repl generated files
 repl-temp-*
+
+.DS_Store
+example/dist

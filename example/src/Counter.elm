@@ -3,7 +3,7 @@ module Counter where
 import Html exposing (..)
 import Html.Attributes exposing (style)
 import Html.Events exposing (onClick)
-
+import Effects exposing (Effects)
 
 -- MODEL
 
@@ -14,14 +14,14 @@ type alias Model = Int
 
 type Action = Increment | Decrement
 
-update : Action -> Model -> Model
+update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
     Increment ->
-      model + 1
+      (model + 1, Effects.none)
 
     Decrement ->
-      model - 1
+      (model - 1, Effects.none)
 
 
 -- VIEW
@@ -34,6 +34,9 @@ view address model =
     , button [ onClick address Increment ] [ text "+" ]
     ]
 
+
+init : Model
+init = 0
 
 countStyle : Attribute
 countStyle =

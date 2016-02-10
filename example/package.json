@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot --inline --port 3000"
+    "dev": "webpack-dev-server --hot --inline --port 3000",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "file-loader": "^0.8.5",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.12",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "elm-webpack-loader": "^2.0.0"
   }
 }

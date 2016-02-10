@@ -25,7 +25,6 @@ module.exports = function(content) {
 function wrap(input, content) {
   return [
     content,
-    'var deps = ' + loaderUtils.stringifyRequest(this, "!!" + input) + ';',
     hmrScript
   ].join('\n');
 }

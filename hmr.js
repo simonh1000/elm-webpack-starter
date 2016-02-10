@@ -1,47 +1,50 @@
 var instances = module.hot && module.hot.data
   ? module.hot.data.instances || {}
   : {};
-var uid = 0;
+var uid = module.hot && module.hot.data
+  ? module.hot.uid || 0
+  : 0;
 
 module.exports = (function (Elm) {
   var embed = Elm.embed;
-  var worker = Elm.worker;
   var fullscreen = Elm.fullscreen;
 
   return Object.assign(Elm, {
     embed: function(module, container, config) {
-      var id = ++uid;
-
-      //find module name
-      var name = Object.keys(Elm).find(function (name) { return Elm[name] === module});
-      var elm = embed(module, container, config);
-      //hook dispose
-      var dispose = elm.dispose;
-      instances[id] = {
-        elm: elm,
-        name: name,
-        config: config,
-        dispose: dispose,
-        container: container
-      };
-      elm.dispose = function () {
-        delete instances[id];
-        return dispose();
-      } 
-      return elm;
+      return wrap(module, container, config);
     },
-    worker: function() {
-      console.warn('elm-hot-loader currently only supports Elm.embed().');
-      return proxy(worker, arguments);
-    },
-    fullscreen: function() {
-      console.warn('elm-hot-loader currently only supports Elm.embed().');
-      return proxy(fullscreen, arguments);
+    fullscreen: function(module, config) {
+      return wrap(module, null , config);
     }
   });
 
-  function proxy(method, arguments, warn) {
-    return method.apply(Elm, arguments);
+  function getUID() {
+    return ++uid;
+  }
+
+  function wrap(module, container, config) {
+    var id = getUID();
+
+    //find module name
+    var name = Object.keys(Elm).find(function (name) { return Elm[name] === module});
+    var elm = container 
+      ? embed(module, container, config) 
+      : fullscreen(module, config);
+
+    //hook dispose
+    var dispose = elm.dispose;
+    var hookedDispose = function() {
+      delete instances[id];
+      return dispose();
+    };
+    hookedDispose.original = dispose;
+    elm.dispose = hookedDispose;
+
+    //register
+    instances[id] = {
+      elm: elm,
+      name: name
+    };
   }
 })(module.exports);
 
@@ -49,6 +52,7 @@ if (module.hot) {
   module.hot.accept();
   module.hot.dispose(function(data) {
     data.instances = instances;
+    data.uid = uid;
   });
 
   var Elm = module.exports;
@@ -56,7 +60,16 @@ if (module.hot) {
     var instance = instances[id];
     console.log('[elm-hot] Swapping module: ' + instance.name);
     var oldElm = instance.elm;
-    console.log(oldElm);
-    instance.elm = oldElm.swap(Elm[instance.name]);
+    var hookedDispose = oldElm.dispose;
+    oldElm.dispose = hookedDispose.original;
+    var newElm = instance.elm = oldElm.swap(Elm[instance.name]);
+    hookedDispose.original = newElm.dispose;
+    newElm.dispose = hookedDispose;
+    if ('swap' in newElm.ports) {
+      //trigger re-render
+      newElm.ports.swap.send(true)
+    } else {
+      console.log('[elm-hot] \'swap\' port is not defined.');
+    }
   });
 }

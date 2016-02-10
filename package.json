@@ -18,5 +18,8 @@
   "homepage": "https://github.com/fluxxu/elm-hot-loader#readme",
   "dependencies": {
     "loader-utils": "^0.2.12"
+  },
+  "peerDependencies": {
+    "elm-webpack-loader": "^2.0.0"
   }
 }
