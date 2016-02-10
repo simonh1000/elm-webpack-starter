@@ -60,7 +60,7 @@ if (module.hot) {
   var Elm = module.exports;
   Object.keys(instances).forEach(function(id) {
     var instance = instances[id];
-    console.log('[elm-hot] Swapping module: ' + instance.name);
+    console.log('[elm-hot] Swapping module: ' + instance.name + '#' + id);
     var oldElm = instance.elm;
     var hookedDispose = oldElm.dispose;
     oldElm.dispose = hookedDispose.original;
@@ -71,7 +71,7 @@ if (module.hot) {
       //trigger re-render
       newElm.ports.swap.send(true)
     } else {
-      console.log('[elm-hot] \'swap\' port is not defined.');
+      console.error('[elm-hot] \'swap\' port is not defined.');
     }
   });
 }
