@@ -61,3 +61,16 @@ app =
     , inputs = [ swapsignal ] -- add swap signal as an input
     }
 ```
+### Example
+
+You can find an example in the `example` folder.
+To run:
+
+```
+npm install
+npm run build
+```
+
+Open http://localhost:3000
+
+[[https://github.com/fluxxu/elm-hot-loader/blob/master/example/example.gif|alt=example]]
