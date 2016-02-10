@@ -1,6 +1,6 @@
 # Elm Hot Loader [![Version](https://img.shields.io/npm/v/elm-hot-loader.svg)](https://www.npmjs.com/package/elm-hot-loader)
 
-[HMR](https://webpack.github.io/docs/hot-module-replacement.html) for [Elm](http://elm-lang.org/) modules.
+Hot swapping ([HMR](https://webpack.github.io/docs/hot-module-replacement.html)) for [Elm](http://elm-lang.org/) modules.
 
 
 ## Installation
@@ -73,4 +73,4 @@ npm run build
 
 Open http://localhost:3000
 
-[[https://github.com/fluxxu/elm-hot-loader/blob/master/example/example.gif|alt=example]]
+![Screenshot](https://raw.githubusercontent.com/fluxxu/elm-hot-loader/master/example/example.gif)
