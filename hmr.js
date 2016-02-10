@@ -45,6 +45,8 @@ module.exports = (function (Elm) {
       elm: elm,
       name: name
     };
+
+    return elm;
   }
 })(module.exports);
 
