@@ -1,6 +1,6 @@
 {
   "name": "elm-hot-loader",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "",
   "main": "index.js",
   "scripts": {
