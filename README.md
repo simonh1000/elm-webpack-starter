@@ -70,7 +70,7 @@ To run:
 
 ```
 npm install
-npm run build
+npm run dev
 ```
 
 Open http://localhost:3000
