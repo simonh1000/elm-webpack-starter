@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot --inline --port 3000",
-    "build": "webpack"
+    "build": "webpack",
+    "postinstall": "elm-package install -y"
   },
   "author": "",
   "license": "ISC",
