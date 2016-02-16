@@ -69,6 +69,7 @@ You can find an example in the `example` folder.
 To run:
 
 ```
+cd example
 npm install
 npm run dev
 ```
