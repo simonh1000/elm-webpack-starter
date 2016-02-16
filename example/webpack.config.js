@@ -21,7 +21,7 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loader: '../../index.js!elm-webpack'
+        loader: 'elm-hot!elm-webpack'
       }
     ],
 
