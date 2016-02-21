@@ -9,10 +9,15 @@ import Effects exposing (Effects)
 
 type alias Model = Int
 
+init : Model
+init = 0
+
 
 -- UPDATE
 
-type Action = Increment | Decrement
+type Action
+    = Increment
+    | Decrement
 
 update : Action -> Model -> (Model, Effects Action)
 update action model =
@@ -33,9 +38,6 @@ view address model =
     , button [ onClick address Increment ] [ text "+" ]
     ]
 
-
-init : Model
-init = 0
 
 countStyle : Attribute
 countStyle =

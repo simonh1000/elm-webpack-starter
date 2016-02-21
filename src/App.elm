@@ -7,7 +7,6 @@ import Task
 import Html exposing (div, text, h1, ul, li, button)
 import Html.Events exposing (onClick)
 
-
 type alias Model =
   { counter : Counter.Model
   , logs : List String
@@ -51,7 +50,7 @@ update action model =
 view : Signal.Address Action -> Model -> Html.Html
 view address model =
   div []
-    [ h1 [] [ text "counter:" ]
+    [ h1 [] [ text "Counter" ]
     , Counter.view (Signal.forwardTo address CounterAction) model.counter
     , text "logs: "
     , button [ onClick address (AppendLog (getLog model)) ]
