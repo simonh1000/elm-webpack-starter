@@ -23,7 +23,6 @@ update action model =
     Decrement ->
       (model - 1, Effects.none)
 
-
 -- VIEW
 
 view : Signal.Address Action -> Model -> Html

@@ -4,7 +4,7 @@ import Effects exposing (Never)
 import Counter
 import StartApp
 import Task
-import Html exposing (div, text, ul, li, button)
+import Html exposing (div, text, h1, ul, li, button)
 import Html.Events exposing (onClick)
 
 
@@ -51,9 +51,9 @@ update action model =
 view : Signal.Address Action -> Model -> Html.Html
 view address model =
   div []
-    [ text "counter:"
+    [ h1 [] [ text "counter:" ]
     , Counter.view (Signal.forwardTo address CounterAction) model.counter
-    , text "logs:"
+    , text "logs: "
     , button [ onClick address (AppendLog (getLog model)) ]
         [ text "append log" ]
     , ul [] (List.map (\log -> li [] [ text log ]) model.logs)

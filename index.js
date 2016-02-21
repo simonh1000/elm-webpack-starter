@@ -2,12 +2,13 @@ var readFileSync = require('fs').readFileSync;
 var path = require('path');
 
 var hmrScript = readFileSync(__dirname + '/hmr.js');
+var loaderUtils = require("loader-utils");
 
+require("./src/styles.scss")
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Flux Xu @fluxxu
 */
-var loaderUtils = require("loader-utils");
 module.exports = function(content) {
   this.cacheable && this.cacheable();
   var callback = this.async();
