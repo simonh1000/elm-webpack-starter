@@ -8,7 +8,7 @@ module.exports = {
 
   resolve: {
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.elm']
+    extensions: ['', '.js', '.elm', '.scss']
   },
 
   module: {
@@ -22,6 +22,11 @@ module.exports = {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
         loader: 'elm-hot!elm-webpack'
+    },
+    {
+        test: /\.scss$/,
+        exclude: [/elm-stuff/, /node_modules/],
+        loaders: ["style", "css", "sass"]
       }
     ],
 
