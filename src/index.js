@@ -1,7 +1,8 @@
 'use strict';
 
 require('./index.html');
-require("!style!css!sass!./styles.scss");
+require("./styles.scss");
+
 var Elm = require('./Main');
 
 var elm = Elm.fullscreen(Elm.Main, { swap: false });
