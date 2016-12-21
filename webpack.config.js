@@ -1,3 +1,5 @@
+var elmSource = __dirname + '/src';
+
 module.exports = {
   entry: './src/index.js',
 
@@ -21,12 +23,12 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loader: 'elm-hot!elm-webpack'
+        loader: 'elm-webpack'
     },
     {
         test: /\.scss$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loaders: ["style", "css", "sass"]
+        loaders: ["style-loader", "css-loader", "sass-loader"]
       }
     ],
 
@@ -34,6 +36,7 @@ module.exports = {
   },
 
   devServer: {
+    inline: true,
     stats: 'errors-only'
   }
 };

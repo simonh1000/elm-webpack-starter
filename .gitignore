@@ -41,3 +41,4 @@ repl-temp-*
 example/dist
 
 ignore
+dist

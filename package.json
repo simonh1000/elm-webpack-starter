@@ -1,32 +1,28 @@
 {
-    "author": "Simon Hampton",
-    "name": "elm-hot-loader-starter",
-    "version": "0.1.0",
-    "description": "Webpack Elm Starter with hotloading",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "webpack-dev-server --hot --inline --port 3000",
-        "build": "webpack",
-        "postinstall": "elm-package install -y"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/simonh1000/elm-hot-loader"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "loader-utils": "^0.2.12"
-    },
-    "devDependencies": {
-        "css-loader": "^0.23.1",
-        "elm-hot-loader": "^0.1.0",
-        "elm-webpack-loader": "^2.0.0",
-        "file-loader": "^0.8.5",
-        "node-sass": "^3.4.2",
-        "sass-loader": "^3.1.2",
-        "style-loader": "^0.13.0",
-        "webpack": "^1.12.13",
-        "webpack-dev-server": "^1.14.1"
-    }
+  "author": "Simon Hampton",
+  "name": "elm-hot-loader-starter",
+  "version": "0.1.0",
+  "description": "Webpack Elm Starter with hotloading",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --port 3000",
+    "build": "webpack",
+    "postinstall": "elm-package install -y"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonh1000/elm-hot-loader"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "elm-webpack-loader": "^4.1.0",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.1.1",
+    "sass-loader": "^4.1.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  }
 }

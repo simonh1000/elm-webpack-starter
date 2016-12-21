@@ -1,75 +1,83 @@
-module App (Model, Action(..), init, update, view, logMailbox) where
+module App exposing (..)
 
-import Effects exposing (Never)
-import Counter
-import StartApp
-import Task
-import Html exposing (div, text, h1, ul, li, button)
+import Html exposing (Html, div, text, h1, ul, li, button)
 import Html.Events exposing (onClick)
+import Counter
+
 
 type alias Model =
-  { counter : Counter.Model
-  , logs : List String
-  }
+    { counter : Counter.Model
+    , logs : List String
+    }
 
-init : ( Model, Effects.Effects Action )
+
+init : ( Model, Cmd Msg )
 init =
-  ({ counter = Counter.init, logs = [] }, Effects.none)
+    ( { counter = Counter.init, logs = [] }
+    , Cmd.none
+    )
+
+
 
 -- UPDATE
 
-type Action
-  = Empty -- this action does not modify model, just to trigger a re-render
-  | CounterAction Counter.Action
-  | AppendLog String
 
-update : Action -> Model -> ( Model, Effects.Effects Action)
-update action model =
-  case action of
-    Empty -> (model, Effects.none)
+type Msg
+    = Empty
+      -- this action does not modify model, just to trigger a re-render
+    | CounterAction Counter.Msg
+    | AppendLog String
 
-    CounterAction counterAction ->
-      let
-        (counterModel, _) = Counter.update counterAction model.counter
-      in
-        ( { model |
-            counter = counterModel
-          }
-        , Effects.none
-        )
 
-    AppendLog log ->
-      ( { model |
-          logs = log :: model.logs
-        }
-      , callJSLog log -- call js using port
-      )
+update : Msg -> Model -> ( Model, Cmd Msg )
+update message model =
+    case message of
+        Empty ->
+            model ! []
+
+        CounterAction counterAction ->
+            { model | counter = Counter.update counterAction model.counter } ! []
+
+        AppendLog log ->
+            ( { model
+                | logs = log :: model.logs
+              }
+              --   , callJSLog log -- call js using port
+            , Cmd.none
+            )
+
+
 
 -- VIEW
 
-view : Signal.Address Action -> Model -> Html.Html
-view address model =
-  div []
-    [ h1 [] [ text "Counter" ]
-    , Counter.view (Signal.forwardTo address CounterAction) model.counter
-    , text "logs: "
-    , button [ onClick address (AppendLog (getLog model)) ]
-        [ text "append log" ]
-    , ul [] (List.map (\log -> li [] [ text log ]) model.logs)
-    ]
+
+view : Model -> Html Msg
+view model =
+    div []
+        [ h1 [] [ text "Counter" ]
+        , Counter.view model.counter |> Html.map CounterAction
+        , text "logs: "
+        , button [ onClick (AppendLog <| getLog model) ]
+            [ text "append log" ]
+        , model.logs
+            |> List.map (\log -> li [] [ text log ])
+            |> ul []
+        ]
+
 
 getLog : Model -> String
 getLog model =
-  ("Count = " ++ (toString model.counter))
+    "Count = " ++ toString model.counter
+
+
 
 -- TASKS / EFFECTS
-
-callJSLog : String -> Effects.Effects Action
-callJSLog log =
-  Signal.send logMailbox.address log
-    |> Effects.task
-    |> Effects.map (\_ -> Empty)
-
-logMailbox : Signal.Mailbox String
-logMailbox =
-  Signal.mailbox ""
+-- callJSLog : String -> Effects.Effects Action
+-- callJSLog log =
+--   Signal.send logMailbox.address log
+--     |> Effects.task
+--     |> Effects.map (\_ -> Empty)
+--
+-- logMailbox : Signal.Mailbox String
+-- logMailbox =
+--   Signal.mailbox ""
