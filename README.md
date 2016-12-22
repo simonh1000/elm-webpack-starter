@@ -1,4 +1,5 @@
-# Elm Webpack starter with Hot Loader
+# Elm 0.18 with Webpack 1.x, Hot Loading and Boostrap 4.0
+
 (Inspired from https://github.com/fluxxu/elm-hot-loader)
 
 ## Installation

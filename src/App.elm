@@ -24,8 +24,7 @@ init =
 
 
 type Msg
-    = Empty
-      -- this action does not modify model, just to trigger a re-render
+    = NoOp
     | CounterAction Counter.Msg
     | AppendLog String
 
@@ -33,7 +32,7 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
-        Empty ->
+        NoOp ->
             model ! []
 
         CounterAction counterAction ->
@@ -57,12 +56,12 @@ view model =
     div [ class "container" ]
         [ h1 [] [ text "Counter" ]
         , Counter.view model.counter |> Html.map CounterAction
-        , text "logs: "
-        , button [ onClick (AppendLog <| getLog model) ]
-            [ text "append log" ]
-        , model.logs
-            |> List.map (\log -> li [] [ text log ])
-            |> ul []
+          -- , text "logs: "
+          -- , button [ onClick (AppendLog <| getLog model) ]
+          --     [ text "append log" ]
+          -- , model.logs
+          --     |> List.map (\log -> li [] [ text log ])
+          --     |> ul []
         ]
 
 
@@ -77,7 +76,7 @@ getLog model =
 -- callJSLog log =
 --   Signal.send logMailbox.address log
 --     |> Effects.task
---     |> Effects.map (\_ -> Empty)
+--     |> Effects.map (\_ -> NoOp)
 --
 -- logMailbox : Signal.Mailbox String
 -- logMailbox =
