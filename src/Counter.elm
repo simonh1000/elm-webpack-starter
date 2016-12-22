@@ -1,7 +1,7 @@
 module Counter exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (style)
+import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 
 
@@ -43,9 +43,17 @@ update message model =
 view : Model -> Html Msg
 view model =
     div []
-        [ button [ onClick Decrement ] [ text "-" ]
+        [ button
+            [ class "btn btn-primary"
+            , onClick Decrement
+            ]
+            [ text "-" ]
         , div [ countStyle ] [ text (toString model) ]
-        , button [ onClick Increment ] [ text "+" ]
+        , button
+            [ class "btn btn-primary"
+            , onClick Increment
+            ]
+            [ text "+" ]
         ]
 
 

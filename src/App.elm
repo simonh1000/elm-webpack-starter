@@ -1,6 +1,7 @@
 module App exposing (..)
 
 import Html exposing (Html, div, text, h1, ul, li, button)
+import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Counter
 
@@ -53,7 +54,7 @@ update message model =
 
 view : Model -> Html Msg
 view model =
-    div []
+    div [ class "container" ]
         [ h1 [] [ text "Counter" ]
         , Counter.view model.counter |> Html.map CounterAction
         , text "logs: "

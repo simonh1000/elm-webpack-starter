@@ -1,7 +1,8 @@
 'use strict';
 
 require('./index.html');
-require("./styles.scss");
+// require("./styles.scss");
+require("bootstrap-loader");
 
 var Elm = require('./Main');
 
