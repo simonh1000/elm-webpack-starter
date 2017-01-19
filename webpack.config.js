@@ -24,6 +24,7 @@ module.exports = {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
         loader: 'elm-hot!elm-webpack'
+        // loader: 'elm-hot!elm-webpack?cwd=' + elmSource
     },
     {
         test: /\.scss$/,
