@@ -6,7 +6,7 @@
 bootstrapVersion: 4
 
 # If Bootstrap version 4 is used - turn on/off flexbox model
-useFlexbox: true
+# useFlexbox: true
 
 # Webpack loaders, order matters
 styleLoaders:
@@ -78,7 +78,7 @@ styles:
   buttons: true
 
   # Components
-  animation: true
+  transitions: true
   dropdown: true
   button-group: true
   input-group: true
@@ -95,7 +95,7 @@ styles:
   list-group: true
   responsive-embed: true
   close: true
-  tags: true
+  badge: true
 
   # Components w/ JavaScript
 #  modal: true

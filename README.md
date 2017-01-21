@@ -1,4 +1,4 @@
-# Elm 0.18 with Webpack 1.x, Hot Loading and Boostrap 4.0
+# Elm 0.18 with Webpack, Hot Loading and Boostrap 4.0-alpha6
 
 (Inspired from https://github.com/fluxxu/elm-hot-loader)
 
@@ -11,8 +11,4 @@ $ npm run dev
 
 Open http://localhost:3000
 
-See also my [MEEN(!) stack](https://github.com/simonh1000/elm-fullstack-starter) starter using Gulp
-
-
-
-"dev": "webpack-dev-server --hot -inline --port 3000",
+See also my [Gulp-based dev environment](https://github.com/simonh1000/elm-fullstack-starter) sas well.
