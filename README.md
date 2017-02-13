@@ -1,6 +1,6 @@
-# Elm 0.18 with Webpack, Hot Loading and Boostrap 4.0-alpha6
+# Elm 0.18 with Webpack 2, Hot Loading
 
-(Inspired from https://github.com/fluxxu/elm-hot-loader)
+A simple Elm dev environment with hot-loading (i.e. state is retained as you edit your code, uses https://github.com/fluxxu/elm-hot-loader).
 
 ## Installation
 
@@ -9,6 +9,10 @@ $ npm install
 $ npm run dev
 ```
 
-Open http://localhost:3000
+Open http://localhost:3000 and start modifying the code in /src.
 
-See also my [Gulp-based dev environment](https://github.com/simonh1000/elm-fullstack-starter) sas well.
+See also my [Gulp-based dev environment](https://github.com/simonh1000/elm-fullstack-starter).
+
+## ToDo
+
+- fix bootstrap importing

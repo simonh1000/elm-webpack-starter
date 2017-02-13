@@ -1,16 +1,20 @@
 var elmSource = __dirname + '/src';
+var path = require('path');
 
 module.exports = {
   entry: './src/index.js',
 
   output: {
-    path: './dist',
+    path: path.join(__dirname, "dist"),
     filename: 'index.js'
   },
 
   resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.elm', '.scss']
+      modules: [
+          path.join(__dirname, "src"),
+          "node_modules"
+      ],
+      extensions: ['.js', '.elm', '.scss']
   },
 
   module: {
@@ -18,18 +22,23 @@ module.exports = {
       {
         test: /\.html$/,
         exclude: /node_modules/,
-        loader: 'file?name=[name].[ext]'
+        loader: 'file-loader?name=[name].[ext]'
       },
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loader: 'elm-hot!elm-webpack'
+        loader: 'elm-hot-loader!elm-webpack-loader?debug=true'
         // loader: 'elm-hot!elm-webpack?cwd=' + elmSource
     },
     {
         test: /\.scss$/,
         exclude: [/elm-stuff/, /node_modules/],
         loaders: ["style-loader", "css-loader", "sass-loader"]
+      },
+    {
+        test: /\.png$/,
+        exclude: [/elm-stuff/, /node_modules/],
+        loaders: ["url-loader"]
       }
     ],
 
