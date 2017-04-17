@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 var elmSource = __dirname + '/src';
 var path = require('path');
 
@@ -16,7 +18,9 @@ module.exports = {
       ],
       extensions: ['.js', '.elm', '.scss']
   },
-
+  plugins: [
+      new webpack.NoEmitOnErrorsPlugin()
+  ],
   module: {
     loaders: [
       {
@@ -36,16 +40,25 @@ module.exports = {
         loaders: ["style-loader", "css-loader", "sass-loader"]
       },
     {
-        test: /\.png$/,
+        test: /\.css$/,
+        exclude: [/elm-stuff/, /node_modules/],
+        loaders: ["style-loader", "css-loader"]
+    },
+    {
+        test: /\.(jpg|png|gif|svg|ico)$/,
         exclude: [/elm-stuff/, /node_modules/],
         loaders: ["url-loader"]
-      }
+      },
+            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
     ],
-
     noParse: /\.elm$/
   },
 
   devServer: {
+    //   proxy: {
+    //       "/": "http://localhost:9779"
+    //   },
     inline: true,
     stats: 'errors-only'
   }
