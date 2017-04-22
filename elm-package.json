@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "elm-hot-loader-starter",
-    "repository": "http://github.com/user/project.git",
+    "repository": "https://github.com/simonh1000/elm-hot-loading-starter.git",
     "license": "ISC",
     "source-directories": [
         "src"

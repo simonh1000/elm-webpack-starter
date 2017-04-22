@@ -28,7 +28,7 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
     "webpack-dev-server": "^2.4.2",
-    "bootstrap": "^4.0.0-alpha.5"
+    "bootstrap": "^4.0.0-alpha.6"
   },
   "dependencies": {
     "elm-hot-loader": "^0.5.4",

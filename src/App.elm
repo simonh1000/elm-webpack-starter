@@ -14,9 +14,7 @@ type alias Model =
 
 init : ( Model, Cmd Msg )
 init =
-    ( { counter = Counter.init, logs = [] }
-    , Cmd.none
-    )
+    ( { counter = Counter.init, logs = [] }, Cmd.none )
 
 
 
@@ -39,12 +37,7 @@ update message model =
             { model | counter = Counter.update counterAction model.counter } ! []
 
         AppendLog log ->
-            ( { model
-                | logs = log :: model.logs
-              }
-              --   , callJSLog log -- call js using port
-            , Cmd.none
-            )
+            ( { model | logs = log :: model.logs }, Cmd.none )
 
 
 
@@ -56,28 +49,4 @@ view model =
     div [ class "container" ]
         [ h1 [] [ text "Counter" ]
         , Counter.view model.counter |> Html.map CounterAction
-          -- , text "logs: "
-          -- , button [ onClick (AppendLog <| getLog model) ]
-          --     [ text "append log" ]
-          -- , model.logs
-          --     |> List.map (\log -> li [] [ text log ])
-          --     |> ul []
         ]
-
-
-getLog : Model -> String
-getLog model =
-    "Count = " ++ toString model.counter
-
-
-
--- TASKS / EFFECTS
--- callJSLog : String -> Effects.Effects Action
--- callJSLog log =
---   Signal.send logMailbox.address log
---     |> Effects.task
---     |> Effects.map (\_ -> NoOp)
---
--- logMailbox : Signal.Mailbox String
--- logMailbox =
---   Signal.mailbox ""
