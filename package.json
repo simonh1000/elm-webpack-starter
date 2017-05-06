@@ -1,7 +1,7 @@
 {
   "author": "Simon Hampton",
   "name": "elm-hot-loader-starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webpack Elm Starter with hotloading",
   "main": "index.js",
   "scripts": {
@@ -16,22 +16,23 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "bootstrap-loader": "^2.0.0",
-    "css-loader": "^0.28.0",
-    "elm-webpack-loader": "^4.3.0",
+    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap-loader": "^2.1.0",
+    "css-loader": "^0.28.1",
+    "elm-webpack-loader": "^4.3.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
     "node-sass": "^4.5.2",
     "postcss-loader": "^1.3.3",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.3",
-    "style-loader": "^0.16.1",
+    "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
-    "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.2",
-    "bootstrap": "^4.0.0-alpha.6"
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
     "elm-hot-loader": "^0.5.4",
-    "elm-webpack-loader": "^4.3.0"
+    "elm-webpack-loader": "^4.3.1"
   }
 }
