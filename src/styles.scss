@@ -1,3 +1,6 @@
 body {
     background-color: #ddd;
+    & {
+        margin-top: 20px;
+    }
 }
