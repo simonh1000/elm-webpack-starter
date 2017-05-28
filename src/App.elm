@@ -1,7 +1,7 @@
 module App exposing (..)
 
 import Html exposing (Html, div, text, h1, p, button)
-import Html.Attributes exposing (..)
+import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 
 
@@ -31,13 +31,13 @@ update message model =
 
 
 -- VIEW
--- view : Model -> Html Msg
 
 
+view : Model -> Html Msg
 view model =
     div [ class "container" ]
         [ h1 [] [ text "Hot loading" ]
-        , p [] [ text "Click on the button below to increment the state. ccThen make a change to the source code and see how the updated state is retained after you recompile." ]
+        , p [] [ text "Click on the button below to increment the state. Then make a change to the source code and see how the state is retained after you recompile." ]
         , p [] [ text <| toString model ]
         , button
             [ class "btn btn-primary"
