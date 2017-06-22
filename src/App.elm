@@ -1,8 +1,8 @@
 module App exposing (..)
 
-import Html exposing (Html, div, text, h1, p, button)
-import Html.Attributes exposing (class)
-import Html.Events exposing (onClick)
+import Html exposing (..)
+import Html.Attributes exposing (..)
+import Html.Events exposing (..)
 
 
 type alias Model =
@@ -44,4 +44,8 @@ view model =
             , onClick Inc
             ]
             [ text "+ 1" ]
+        , p []
+            [ text "And now don't forget to add a star to the Github repo "
+            , a [ href "https://github.com/simonh1000/elm-webpack-starter" ] [ text "elm-webpack-starter" ]
+            ]
         ]
