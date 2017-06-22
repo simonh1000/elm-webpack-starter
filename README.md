@@ -1,4 +1,4 @@
-# Elm 0.18 with Webpack 2, Hot Loading & Bootstrap 4
+# Elm 0.18 with Webpack 3, Hot Loading & Bootstrap 4
 
 My Elm dev environment with hot-loading (i.e. state is retained as you edit your code, uses https://github.com/fluxxu/elm-hot-loader). Like elm-community/elm-webpack-starter but using Webpack 3. I Use this daily for professional work.
 
@@ -12,10 +12,10 @@ $ npm run dev
 ```
 
 With yarn
-``sh
+```sh
 $ yarn install
 $ yarn dev
- ``
+ ```
 
 Open http://localhost:3000 and start modifying the code in /src.
 
