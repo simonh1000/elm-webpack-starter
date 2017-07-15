@@ -40,13 +40,16 @@ view model =
             [ img [ src "images/logo.png" ] []
             , text "Hot loading"
             ]
-        , p [] [ text "Click on the button below to increment the state. Then make a change to the source code and see how the state is retained after you recompile." ]
-        , p [] [ text <| toString model ]
-        , button
-            [ class "btn btn-primary"
-            , onClick Inc
+        , p [] [ text "Click on the button below to increment the state." ]
+        , div []
+            [ text <| toString model
+            , button
+                [ class "btn btn-primary"
+                , onClick Inc
+                ]
+                [ text "+ 1" ]
             ]
-            [ text "+ 1" ]
+        , p [] [ text "Then make a change to the source code and see how the state is retained after you recompile." ]
         , p []
             [ text "And now don't forget to add a star to the Github repo "
             , a [ href "https://github.com/simonh1000/elm-webpack-starter" ] [ text "elm-webpack-starter" ]

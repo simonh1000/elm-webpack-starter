@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "elm-hot-loader-starter",
-    "repository": "https://github.com/simonh1000/elm-webpack-starter.git",
+    "summary": "elm-program",
+    "repository": "https://github.com/user/project.git",
     "license": "ISC",
     "source-directories": [
         "src"

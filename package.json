@@ -1,8 +1,8 @@
 {
   "author": "Simon Hampton",
-  "name": "elm-hot-loader-starter",
+  "name": "elm-webpack-starter",
   "version": "0.7.0",
-  "description": "Elm starter with Webpack 3 hotloading",
+  "description": "Elm starter with Webpack 3 hot-loading",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
