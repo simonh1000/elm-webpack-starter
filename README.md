@@ -31,4 +31,6 @@ npm run prod
 
 Just add to `src/assets/` and the production build copies them to `/dist`
 
+<hr />
+
 **Prefer Gulp?** See also my [Gulp-based dev environment](https://github.com/simonh1000/elm-fullstack-starter).

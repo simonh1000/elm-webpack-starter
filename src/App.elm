@@ -42,12 +42,12 @@ view model =
             ]
         , p [] [ text "Click on the button below to increment the state." ]
         , div []
-            [ text <| toString model
-            , button
+            [ button
                 [ class "btn btn-primary"
                 , onClick Inc
                 ]
                 [ text "+ 1" ]
+            , text <| toString model
             ]
         , p [] [ text "Then make a change to the source code and see how the state is retained after you recompile." ]
         , p []
