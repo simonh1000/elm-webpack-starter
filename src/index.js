@@ -1,6 +1,5 @@
 'use strict';
 
-// require('./index.html');
 require('bootstrap-loader');
 require("./styles.scss");
 

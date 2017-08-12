@@ -1,18 +1,26 @@
-# Elm 0.18 with Webpack 3, Hot Loading & Bootstrap 4
+# Elm 0.18 with Webpack 3, Hot Loading & Bootstrap 4-beta
 
-Elm dev environment with hot-loading (i.e. state is retained as you edit your code, uses https://github.com/fluxxu/elm-hot-loader). Like elm-community/elm-webpack-starter but using Webpack 3. I use this daily for my professional work.
+Elm dev environment with hot-loading (i.e. state is retained as you edit your code - Hot Module Reloading, HMR)). I use this daily for my professional work. Like elm-community/elm-webpack-starter but using Webpack 3.
 
 ## Installation
+
+Clone this repo into a new project folder and run install script
 
 With npm
 
 ```sh
+$ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
+$ cd new-project
+<remove .git directory>
 $ npm install
 $ npm run dev
 ```
 
 With yarn
 ```sh
+$ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
+$ cd new-project
+<remove .git directory>
 $ yarn install
 $ yarn dev
  ```
@@ -33,4 +41,6 @@ Just add to `src/assets/` and the production build copies them to `/dist`
 
 <hr />
 
-**Prefer Gulp?** See also my [Gulp-based dev environment](https://github.com/simonh1000/elm-fullstack-starter).
+## Credits
+
+A long time ago this code was forked from https://github.com/fluxxu/elm-hot-loader

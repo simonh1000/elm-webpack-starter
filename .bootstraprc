@@ -7,7 +7,7 @@ bootstrapVersion: 4
 
 # If Bootstrap version 4 is used - turn on/off flexbox model
 # useFlexbox: true
-
+preBootstrapCustomizations: ./src/precustomisation.scss
 # Webpack loaders, order matters
 styleLoaders:
   - style
@@ -64,7 +64,7 @@ styles:
   mixins: true
 
   # Reset and dependencies
-  normalize: true
+  # normalize: true
   print: true
 
   # Core CSS
@@ -93,7 +93,7 @@ styles:
   progress: true
   media: true
   list-group: true
-  responsive-embed: true
+  # responsive-embed: true
   close: true
   badge: true
 
