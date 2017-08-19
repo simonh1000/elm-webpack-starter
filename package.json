@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
+    "clean-webpack-plugin": "^0.1.16",
     "loglevel": "^1.4.1"
   }
 }

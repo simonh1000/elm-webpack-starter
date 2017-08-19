@@ -1,21 +1,18 @@
+var path = require('path');
 const webpack = require('webpack');
 var merge = require('webpack-merge');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
-var path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
-var TARGET_ENV = process.env.npm_lifecycle_event === 'prod'
-    ? 'production'
-    : 'development';
-var filename = (TARGET_ENV == 'production')
-    ? '[name]-[hash].js'
-    : 'index.js';
+var TARGET_ENV = process.env.npm_lifecycle_event === 'prod' ? 'production' : 'development';
+var filename = (TARGET_ENV == 'production') ? '[name]-[hash].js' : 'index.js';
 
 var common = {
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, "dist"),
-        // add hash when building for production
+        // webpack -p automatically adds hash when building for production
         filename: filename
     },
     plugins: [new HTMLWebpackPlugin({
@@ -116,7 +113,9 @@ if (TARGET_ENV === 'development') {
         devServer: {
             inline: true,
             stats: 'errors-only',
-            contentBase: path.join(__dirname, "src/assets")
+            contentBase: path.join(__dirname, "src/assets"),
+            // TODO serve index.html in place of 404 responses
+            // historyApiFallback: true
         }
     });
 }
@@ -125,11 +124,19 @@ if (TARGET_ENV === 'production') {
     console.log('Building for prod...');
     module.exports = merge(common, {
         plugins: [
+            // Delete everything from output directory nad report to user
+            new CleanWebpackPlugin(['dist'], {
+              root:     __dirname,
+              exclude:  [],
+              verbose:  true,
+              dry:      false
+            }),
             new CopyWebpackPlugin([
                 {
                     from: 'src/assets'
                 }
             ]),
+            // TODO update to version that handles =>
             new webpack.optimize.UglifyJsPlugin()
         ],
         module: {
