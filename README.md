@@ -27,6 +27,7 @@ $ yarn dev
  ```
 
 Open http://localhost:3000 and start modifying the code in /src.
+(An example using Routing is provided in the `navigation` branch)
 
 ## Production
 

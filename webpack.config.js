@@ -114,8 +114,8 @@ if (TARGET_ENV === 'development') {
             inline: true,
             stats: 'errors-only',
             contentBase: path.join(__dirname, "src/assets"),
-            // TODO serve index.html in place of 404 responses
-            // historyApiFallback: true
+            // For SPAs: serve index.html in place of 404 responses
+            historyApiFallback: true
         }
     });
 }
@@ -124,7 +124,7 @@ if (TARGET_ENV === 'production') {
     console.log('Building for prod...');
     module.exports = merge(common, {
         plugins: [
-            // Delete everything from output directory nad report to user
+            // Delete everything from output directory and report to user
             new CleanWebpackPlugin(['dist'], {
               root:     __dirname,
               exclude:  [],
