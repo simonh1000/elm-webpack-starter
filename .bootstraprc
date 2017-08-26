@@ -7,7 +7,7 @@ bootstrapVersion: 4
 
 # If Bootstrap version 4 is used - turn on/off flexbox model
 # useFlexbox: true
-preBootstrapCustomizations: ./src/precustomisation.scss
+# preBootstrapCustomizations: ./src/precustomisation.scss
 # Webpack loaders, order matters
 styleLoaders:
   - style
