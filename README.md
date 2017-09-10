@@ -67,3 +67,12 @@ You will also need to npm install babel.
 ## Credits
 
 A long time ago this code was forked from https://github.com/fluxxu/elm-hot-loader
+
+## How it works
+
+"webpack-dev-server --hot --inline --host=0.0.0.0 --port 3000",
+
+--hot Enable webpack's Hot Module Replacement feature
+--inline (default) a script will be inserted in your bundle to take care of live reloading, and build messages will appear in the browser console.
+--host=0.0.0.0 ??
+--port 3000 - use port 3000 instead of default 8000

@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --hot --inline --port 3000",
+    "dev": "webpack-dev-server --hot --port 3000",
     "build": "webpack",
     "prod": "webpack -p",
     "postinstall": "elm-package install -y"
