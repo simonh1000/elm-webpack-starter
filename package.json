@@ -5,6 +5,7 @@
   "description": "Elm starter with Webpack 3 hot-loading",
   "main": "index.js",
   "scripts": {
+    "start": "npm run dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --hot --port 3000",
     "build": "webpack",
