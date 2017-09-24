@@ -1,15 +1,15 @@
 {
   "author": "Simon Hampton",
   "name": "elm-webpack-starter",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "Elm starter with Webpack 3 hot-loading",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "elm-test",
     "dev": "webpack-dev-server --hot --port 3000",
     "build": "webpack",
     "prod": "webpack -p",
-    "postinstall": "elm-package install -y"
+    "postinstall": "elm-package install -y && elm-test init"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "babel-preset-env": "^1.6.0",
     "bootstrap-loader": "^2.2.0",
     "chokidar-cli": "^1.2.0",
+    "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "elm-hot-loader": "^0.5.4",
@@ -41,7 +42,6 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
-    "clean-webpack-plugin": "^0.1.16",
     "loglevel": "^1.4.1"
   }
 }
