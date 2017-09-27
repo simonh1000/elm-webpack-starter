@@ -12,7 +12,6 @@ With npm
 ```sh
 $ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
 $ cd new-project
-<remove .git directory>
 $ npm install
 $ npm run dev
 ```
@@ -21,7 +20,6 @@ With yarn
 ```sh
 $ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
 $ cd new-project
-<remove .git directory and run git init>
 $ yarn
 $ yarn dev
  ```
@@ -43,9 +41,10 @@ Just add to `src/assets/` and the production build copies them to `/dist`
 
 ## Testing
 
-[https://github.com/elm-community/elm-test#running-tests-locally](Install elm-test)
+[Install elm-test globally](https://github.com/elm-community/elm-test#running-tests-locally)
 
 `elm-test init` is run when you install your dependencies. After that all you need to do to run the tests is
+
 ```sh
 yarn test
 ```
