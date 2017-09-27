@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "elm-test",
+    "start": "npm run dev",
     "dev": "webpack-dev-server --hot --port 3000",
     "build": "webpack",
     "prod": "webpack -p",
