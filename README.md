@@ -59,7 +59,7 @@ If you add dependencies to your main app, then run `elm-test --add-dependencies`
 
 If you need to write some Javascript port code, you need to be aware that `npm run prod` will fail as the uglifyjs plugin provided with Webpack 3 cannot handle ES6. There are a couple of ways forward
 
-- Install and use [https://babeljs.io/](babel) to transpile to es5 before passing to uglifyjs. I modify the common.module.rules to read:
+- Install and use [Babel](https://babeljs.io/) to transpile to es5 before passing to uglifyjs. I modify the common.module.rules to read:
 ```
 {
    test: /\.js$/,
