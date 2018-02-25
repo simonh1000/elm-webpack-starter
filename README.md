@@ -1,4 +1,4 @@
-https://circleci.com/gh/simonh1000/elm-webpack-starter.png?circle-token=:circle-token
+<img src="https://circleci.com/gh/simonh1000/elm-webpack-starter.png?circle-token=:circle-token">
 
 # Elm 0.18 with Webpack 3, Hot Loading & Bootstrap 4
 
