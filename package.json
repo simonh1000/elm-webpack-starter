@@ -1,11 +1,11 @@
 {
   "author": "Simon Hampton",
   "name": "elm-webpack-starter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Elm starter with Webpack 3 hot-loading",
   "main": "index.js",
   "scripts": {
-    "test": "elm-test",
+    "test": "elm-verify-examples && elm-test",
     "start": "npm run dev",
     "dev": "webpack-dev-server --hot --port 3000 --colors",
     "build": "webpack",

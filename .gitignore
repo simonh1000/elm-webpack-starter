@@ -27,3 +27,4 @@ example/dist
 
 ignore
 dist
+tests/VerifyExamples

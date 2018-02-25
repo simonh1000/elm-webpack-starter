@@ -45,13 +45,15 @@ Just add to `src/assets/` and the production build copies them to `/dist`
 
 `elm-test init` is run when you install your dependencies. After that all you need to do to run the tests is
 
-```sh
+```
 yarn test
 ```
 
 Take a look at the examples in `tests/`
 
 If you add dependencies to your main app, then run `elm-test --add-dependencies`
+
+I have also added [elm-verify-examples](https://github.com/stoeffel/elm-verify-examples) and provided an example in the definition of `add1` in App.elm.
 
 <hr />
 
@@ -87,3 +89,8 @@ A long time ago this code was forked from https://github.com/fluxxu/elm-hot-load
 --inline (default) a script will be inserted in your bundle to take care of live reloading, and build messages will appear in the browser console.
 --host=0.0.0.0 ??
 --port 3000 - use port 3000 instead of default 8000
+
+## Changelog
+
+ - 1.1.0 - add elm-verify-examples
+ 
