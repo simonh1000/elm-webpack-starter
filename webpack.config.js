@@ -127,9 +127,9 @@ if (TARGET_ENV === "production") {
                 {
                     from: "src/assets"
                 }
-            ]),
+            ])
             // TODO update to version that handles =>
-            new webpack.optimize.UglifyJsPlugin()
+            // new webpack.optimize.UglifyJsPlugin()
         ],
         module: {
             rules: [
