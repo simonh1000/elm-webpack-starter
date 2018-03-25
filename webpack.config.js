@@ -1,8 +1,8 @@
-var path = require("path");
+const path = require("path");
 const webpack = require("webpack");
-var merge = require("webpack-merge");
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-var HTMLWebpackPlugin = require("html-webpack-plugin");
+const merge = require("webpack-merge");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 var TARGET_ENV =
@@ -109,7 +109,7 @@ if (TARGET_ENV === "development") {
 }
 
 if (TARGET_ENV === "production") {
-    console.log("Building for prod...");
+    console.log("Building for Production...");
     module.exports = merge(common, {
         plugins: [
             // Delete everything from output directory and report to user
