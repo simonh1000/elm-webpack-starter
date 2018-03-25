@@ -34,11 +34,7 @@ var common = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
-                    options: {
-                        // env: automatically determines the Babel plugins you need based on your supported environments
-                        presets: ["env"]
-                    }
+                    loader: "babel-loader"
                 }
             },
             {
@@ -128,8 +124,6 @@ if (TARGET_ENV === "production") {
                     from: "src/assets"
                 }
             ])
-            // TODO update to version that handles =>
-            // new webpack.optimize.UglifyJsPlugin()
         ],
         module: {
             rules: [
