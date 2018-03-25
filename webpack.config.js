@@ -18,8 +18,8 @@ var common = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            // using .ejs prevents other loaders causing errors
-            template: "src/index.ejs",
+            // Use this template to get basic responsive meta tags
+            template: "src/index.html",
             // inject details of output file at end of body
             inject: "body"
         })
@@ -30,11 +30,6 @@ var common = {
     },
     module: {
         rules: [
-            {
-                test: /\.html$/,
-                exclude: /node_modules/,
-                loader: "file-loader?name=[name].[ext]"
-            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
