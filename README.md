@@ -1,4 +1,6 @@
-# Elm 0.18 with Webpack 3, Hot Loading & Bootstrap 4-beta
+<img src="https://circleci.com/gh/simonh1000/elm-webpack-starter.png?circle-token=:circle-token">
+
+# Elm 0.18 with Webpack 3, Hot Loading & Bootstrap 4
 
 Elm dev environment with hot-loading (i.e. state is retained as you edit your code - Hot Module Reloading, HMR)). I use this daily for my professional work. Like elm-community/elm-webpack-starter but using Webpack 3.
 
@@ -93,4 +95,3 @@ A long time ago this code was forked from https://github.com/fluxxu/elm-hot-load
 ## Changelog
 
  - 1.1.0 - add elm-verify-examples
- 
