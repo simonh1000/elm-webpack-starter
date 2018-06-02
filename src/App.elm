@@ -1,5 +1,6 @@
 module App exposing (..)
 
+import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -9,8 +10,8 @@ type alias Model =
     Int
 
 
-init : ( Model, Cmd Msg )
-init =
+init : Browser.Env flags -> ( Model, Cmd Msg )
+init _ =
     ( 0, Cmd.none )
 
 
@@ -57,7 +58,7 @@ view model =
                 , onClick Inc
                 ]
                 [ text "+ 1" ]
-            , text <| toString model
+            , text <| String.fromInt model
             ]
         , p [] [ text "Then make a change to the source code and see how the state is retained after you recompile." ]
         , p []

@@ -1,13 +1,20 @@
 module Main exposing (main)
 
-import Html
-import App exposing (init, update, view)
+import Browser
+import Html exposing (..)
+import Html.Events exposing (onClick)
+import App exposing (Model, Msg, init, update, view)
 
 
+-- MAIN
+
+
+main : Program () Model Msg
 main =
-    Html.program
+    Browser.fullscreen
         { init = init
         , update = update
-        , view = view
-        , subscriptions = always Sub.none
+        , view = \m -> Browser.Page "Webpack starter" [ view m ]
+        , onNavigation = Nothing
+        , subscriptions = \_ -> Sub.none
         }
