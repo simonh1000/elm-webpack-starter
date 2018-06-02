@@ -4,6 +4,9 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Browser.Navigation as Nav
+import Url exposing (Url)
+import Url.Parser as UrlParser
 
 
 type alias Model =
@@ -11,8 +14,24 @@ type alias Model =
 
 
 init : Browser.Env flags -> ( Model, Cmd Msg )
-init _ =
-    ( 0, Cmd.none )
+init { url } =
+    ( urlParser url, Cmd.none )
+
+
+
+-- URL Parsing and Routing
+
+
+navigationHandler : Url -> Msg
+navigationHandler =
+    urlParser >> Set
+
+
+urlParser : Url -> Int
+urlParser url =
+    url
+        |> UrlParser.parse UrlParser.int
+        |> Maybe.withDefault 0
 
 
 
@@ -21,6 +40,7 @@ init _ =
 
 type Msg
     = Inc
+    | Set Int
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -28,6 +48,9 @@ update message model =
     case message of
         Inc ->
             ( add1 model, Cmd.none )
+
+        Set m ->
+            ( m, Cmd.none )
 
 
 {-| increments the counter
@@ -49,7 +72,7 @@ view model =
     div [ class "container" ]
         [ header []
             [ img [ src "images/logo.png" ] []
-            , h1 [] [ text "Elm Webpack Starter, featuring hot-loading" ]
+            , h1 [] [ text "Elm 0.19 Webpack Starter, featuring hot-loading" ]
             ]
         , p [] [ text "Click on the button below to increment the state." ]
         , div []

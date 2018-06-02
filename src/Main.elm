@@ -1,12 +1,7 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (..)
-import Html.Events exposing (onClick)
-import App exposing (Model, Msg, init, update, view)
-
-
--- MAIN
+import App exposing (..)
 
 
 main : Program () Model Msg
@@ -15,6 +10,6 @@ main =
         { init = init
         , update = update
         , view = \m -> Browser.Page "Webpack starter" [ view m ]
-        , onNavigation = Nothing
+        , onNavigation = Just navigationHandler
         , subscriptions = \_ -> Sub.none
         }
