@@ -47,14 +47,14 @@ add1 model =
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ h1 []
+        [ header []
             [ img [ src "images/logo.png" ] []
-            , text "Elm Webpack Starter, featuring hot-loading"
+            , h1 [] [ text "Elm Webpack Starter, featuring hot-loading" ]
             ]
         , p [] [ text "Click on the button below to increment the state." ]
         , div []
             [ button
-                [ class "btn btn-primary"
+                [ class "pure-button pure-button-primary"
                 , onClick Inc
                 ]
                 [ text "+ 1" ]
