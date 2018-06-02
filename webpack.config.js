@@ -5,8 +5,10 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-var MODE =
-    process.env.npm_lifecycle_event === "prod" ? "production" : "development";
+// to extract the css as a separate file
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+var MODE = process.env.npm_lifecycle_event === "prod" ? "production" : "development";
 var filename = MODE == "production" ? "[name]-[hash].js" : "index.js";
 
 var common = {
@@ -124,7 +126,13 @@ if (MODE === "production") {
                 {
                     from: "src/assets"
                 }
-            ])
+            ]),
+            new MiniCssExtractPlugin({
+                // Options similar to the same options in webpackOptions.output
+                // both options are optional
+                filename: "[name].css",
+                chunkFilename: "[id].css"
+            })
         ],
         module: {
             rules: [
@@ -136,7 +144,17 @@ if (MODE === "production") {
                             loader: "elm-webpack-loader"
                         }
                     ]
-                }
+                },
+            {
+                test: /\.css$/,
+                exclude: [/elm-stuff/, /node_modules/],
+                loaders: [MiniCssExtractPlugin.loader, "css-loader"]
+            },
+            {
+                test: /\.scss$/,
+                exclude: [/elm-stuff/, /node_modules/],
+                loaders: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+            }
             ]
         }
     });

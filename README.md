@@ -66,6 +66,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 1.3.0 - Remove Bootstrap (use purecss as simple alternative - you don't want me choosing your css framework after all)
  - 1.2.0 - Webpack 4, Babel 7
  - 1.1.0 - add elm-verify-examples
 
