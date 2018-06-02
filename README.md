@@ -32,7 +32,7 @@ Open http://localhost:3000 and start modifying the code in /src.
 
 ## Production
 
-Build production assets with:
+Build production assets (js and css together) with:
 
 ```sh
 npm run prod
