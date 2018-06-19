@@ -66,6 +66,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 2.1.0 - switch to webpack-serve (from webpack dev server)
  - 2.0.0
     - Remove Bootstrap (use purecss as simple alternative - you don't want me choosing your css framework after all)
     - Compile CSS into separate file

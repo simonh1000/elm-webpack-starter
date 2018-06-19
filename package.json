@@ -1,7 +1,7 @@
 {
     "author": "Simon Hampton",
     "name": "elm-webpack-starter",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Elm starter with Webpack 4 hot-reloading",
     "main": "index.js",
     "scripts": {
