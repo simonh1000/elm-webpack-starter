@@ -100,11 +100,19 @@ if (MODE === "development") {
                     ]
                 }
             ]
+        // },
+        // devServer: {
+        //     inline: true,
+        //     stats: "errors-only",
+        //     contentBase: path.join(__dirname, "src/assets"),
+        //     // For SPAs: serve index.html in place of 404 responses
+        //     historyApiFallback: true
+        // }
         },
-        devServer: {
+        serve: {
             inline: true,
             stats: "errors-only",
-            contentBase: path.join(__dirname, "src/assets"),
+            content: path.join(__dirname, "src/assets"),
             // For SPAs: serve index.html in place of 404 responses
             historyApiFallback: true
         }
