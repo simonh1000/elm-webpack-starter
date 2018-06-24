@@ -94,7 +94,8 @@ if (MODE === "development") {
                             loader: "elm-webpack-loader",
                             // add Elm's debug overlay to output
                             options: {
-                                debug: true
+                                debug: true,
+                                forceWatch: true
                             }
                         }
                     ]
