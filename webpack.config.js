@@ -1,6 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
+const history = require('koa-connect-history-api-fallback');
+
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
@@ -101,21 +103,15 @@ if (MODE === "development") {
                     ]
                 }
             ]
-        // },
-        // devServer: {
-        //     inline: true,
-        //     stats: "errors-only",
-        //     contentBase: path.join(__dirname, "src/assets"),
-        //     // For SPAs: serve index.html in place of 404 responses
-        //     historyApiFallback: true
-        // }
         },
         serve: {
             inline: true,
             stats: "errors-only",
-            content: path.join(__dirname, "src/assets"),
-            // For SPAs: serve index.html in place of 404 responses
-            historyApiFallback: true
+            content: [path.join(__dirname, "src/assets")],
+            add: (app, middleware, options) => {
+                // routes /xyz -> /index.html
+                app.use(history());
+            }
         }
     });
 }
