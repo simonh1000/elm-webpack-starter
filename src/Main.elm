@@ -1,15 +1,18 @@
 module Main exposing (main)
 
-import Browser
 import App exposing (..)
+import Browser
 
 
-main : Program () Model Msg
+main : Program Int Model Msg
 main =
-    Browser.fullscreen
+    Browser.document
         { init = init
         , update = update
-        , view = \m -> Browser.Page "Webpack starter" [ view m ]
-        , onNavigation = Just navigationHandler
+        , view =
+            \m ->
+                { title = "Webpack starter"
+                , body = [ view m ]
+                }
         , subscriptions = \_ -> Sub.none
         }

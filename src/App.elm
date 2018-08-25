@@ -13,26 +13,26 @@ type alias Model =
     Int
 
 
-init : Browser.Env flags -> ( Model, Cmd Msg )
-init { url } =
-    ( urlParser url, Cmd.none )
+init : Int -> ( Model, Cmd Msg )
+init _ =
+    ( 7, Cmd.none )
 
 
 
--- URL Parsing and Routing
-
-
-navigationHandler : Url -> Msg
-navigationHandler =
-    urlParser >> Set
-
-
-urlParser : Url -> Int
-urlParser url =
-    url
-        |> UrlParser.parse UrlParser.int
-        |> Maybe.withDefault 0
-
+-- -- URL Parsing and Routing
+--
+--
+-- navigationHandler : Url -> Msg
+-- navigationHandler =
+--     urlParser >> Set
+--
+--
+-- urlParser : Url -> Int
+-- urlParser url =
+--     url
+--         |> UrlParser.parse UrlParser.int
+--         |> Maybe.withDefault 0
+--
 
 
 -- UPDATE
