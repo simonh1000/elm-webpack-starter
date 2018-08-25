@@ -7,10 +7,10 @@
     "scripts": {
         "test": "elm-verify-examples && elm-test",
         "start": "npm run dev",
-        "dev": "webpack-dev-server --hot --port 3000 --colors",
+        "dev": "webpack-serve --hot --port 3000 --colors",
         "build": "webpack",
         "prod": "webpack -p",
-        "postinstall": "elm-package install -y && elm-test init"
+        "//postinstall": "elm-package install -y && elm-test init"
     },
     "repository": {
         "type": "git",
@@ -24,7 +24,7 @@
         "clean-webpack-plugin": "^0.1.19",
         "copy-webpack-plugin": "^4.5.1",
         "css-loader": "^0.28.11",
-        "elm": "^0.18.0",
+        "elm": "^0.19.0",
         "elm-hot-loader": "^0.5.4",
         "elm-verify-examples": "^2.3.1",
         "elm-webpack-loader": "^4.5.0",
