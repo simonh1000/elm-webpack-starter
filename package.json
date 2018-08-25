@@ -5,7 +5,7 @@
     "description": "Elm starter with Webpack 4 hot-reloading",
     "main": "index.js",
     "scripts": {
-        "test": "elm-verify-examples && elm-test",
+        "test": "elm-test",
         "start": "npm run dev",
         "dev": "webpack-serve --port 3000",
         "build": "webpack",
