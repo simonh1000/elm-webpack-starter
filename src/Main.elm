@@ -48,10 +48,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
         Inc ->
-            ( add1 model, Cmd.none )
+            ( add1 model, toJs "Hello Js" )
 
         Set m ->
-            ( m, Cmd.none )
+            ( m, toJs "Hello Js" )
 
 
 {-| increments the counter

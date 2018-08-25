@@ -36,7 +36,7 @@ var common = {
         extensions: [".js", ".elm", ".scss", ".png"]
     },
     resolveLoader: {
-        modules: [path.join(__dirname, "019tmp"), "node_modules"],
+        modules: [path.join(__dirname, "/019tmp"), "node_modules"],
         extensions: [".js", ".elm"]
     },
     module: {
@@ -95,9 +95,6 @@ if (MODE === "development") {
                     test: /\.elm$/,
                     exclude: [/elm-stuff/, /node_modules/],
                     use: [
-                        {
-                            loader: "elm-hot-loader"
-                        },
                         {
                             loader: "elm-webpack-loader",
                             // add Elm's debug overlay to output
