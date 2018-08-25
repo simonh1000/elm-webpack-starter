@@ -2,6 +2,8 @@ const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const history = require('koa-connect-history-api-fallback');
+// const convert = require('koa-connect');
+// const proxy = require('http-proxy-middleware');
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -111,6 +113,8 @@ if (MODE === "development") {
             add: (app, middleware, options) => {
                 // routes /xyz -> /index.html
                 app.use(history());
+                // e.g.
+                // app.use(convert(proxy('/api', { target: 'http://localhost:5000' })));
             }
         }
     });
