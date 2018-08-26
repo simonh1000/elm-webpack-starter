@@ -7,7 +7,6 @@ Elm dev environment with hot-loading (i.e. state is retained as you edit your co
 ## Installation
 
 Clone this repo into a new project folder and run install script.
-(I ignore the errors about missing jquery as it is best not to use the Bootstrap jquery-based components with Elm)
 (You will probably want to delete the .git/ directory and start version control afresh.)
 
 With npm

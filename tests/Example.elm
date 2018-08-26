@@ -1,11 +1,11 @@
-module Example exposing (..)
+module Example exposing (fuzzTest, unitTest, viewTest)
 
+import App exposing (..)
 import Expect exposing (Expectation)
-import Fuzz exposing (Fuzzer, list, int, string)
+import Fuzz exposing (Fuzzer, int, list, string)
 import Test exposing (..)
 import Test.Html.Query as Query
-import Test.Html.Selector exposing (text, tag)
-import App exposing (..)
+import Test.Html.Selector exposing (tag, text)
 
 
 {-| See <https://github.com/elm-community/elm-test>
