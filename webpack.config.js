@@ -95,10 +95,11 @@ if (MODE === "development") {
                     test: /\.elm$/,
                     exclude: [/elm-stuff/, /node_modules/],
                     use: [
+                        { loader: 'elm-hot-webpack-loader' },
                         {
                             loader: "elm-webpack-loader",
-                            // add Elm's debug overlay to output
                             options: {
+                                // add Elm's debug overlay to output
                                 debug: true,
                                 forceWatch: true
                             }
@@ -149,9 +150,7 @@ if (MODE === "production") {
                     test: /\.elm$/,
                     exclude: [/elm-stuff/, /node_modules/],
                     use: [
-                        {
-                            loader: "elm-webpack-loader"
-                        }
+                        { loader: "elm-webpack-loader" }
                     ]
                 },
             {
