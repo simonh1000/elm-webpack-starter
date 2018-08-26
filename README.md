@@ -56,7 +56,7 @@ Take a look at the examples in `tests/`
 
 If you add dependencies to your main app, then run `elm-test --add-dependencies`
 
-I have also added [elm-verify-examples](https://github.com/stoeffel/elm-verify-examples) and provided an example in the definition of `add1` in App.elm.
+<!-- I have also added [elm-verify-examples](https://github.com/stoeffel/elm-verify-examples) and provided an example in the definition of `add1` in App.elm. -->
 
 <hr />
 
@@ -66,6 +66,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.0.0 - version 0.19
  - 2.1.0 - switch to webpack-serve (from webpack dev server)
  - 2.0.0
     - Remove Bootstrap (use purecss as simple alternative - you don't want me choosing your css framework after all)
@@ -80,7 +81,8 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
  ## How it works
 
- `webpack-dev-server --hot --inline --host=0.0.0.0 --port 3000`
+ `webpack-serve --hot --colors --port 3000`
+ `webpack-serve --hot --host=0.0.0.0 --port 3000`
 
   - hot Enable webpack's Hot Module Replacement feature
   - inline (default) a script will be inserted in your bundle to take care of reloading, and build messages will appear in the browser console.
