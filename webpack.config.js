@@ -32,12 +32,8 @@ var common = {
         })
     ],
     resolve: {
-        modules: [path.join(__dirname, "019tmp"), "node_modules"],
+        modules: ["node_modules"],
         extensions: [".js", ".elm", ".scss", ".png"]
-    },
-    resolveLoader: {
-        modules: [path.join(__dirname, "/019tmp"), "node_modules"],
-        extensions: [".js", ".elm"]
     },
     module: {
         rules: [
