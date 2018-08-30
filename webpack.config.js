@@ -32,7 +32,7 @@ var common = {
         })
     ],
     resolve: {
-        modules: ["node_modules"],
+        modules: [path.join(__dirname, "src"), "node_modules"],
         extensions: [".js", ".elm", ".scss", ".png"]
     },
     module: {
