@@ -1,6 +1,6 @@
 <img src="https://circleci.com/gh/simonh1000/elm-webpack-starter.png?circle-token=:circle-token">
 
-# Elm 0.18 with Webpack 4, Hot Reloading & Babel 7
+# Elm 0.19 with Webpack 4, Hot Reloading & Babel 7
 
 Elm dev environment with hot-loading (i.e. state is retained as you edit your code - Hot Module Reloading, HMR)). I use this daily for my professional work. Like elm-community/elm-webpack-starter but using Webpack 4.
 
