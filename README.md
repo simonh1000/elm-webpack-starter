@@ -65,6 +65,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.0.1 - use publicPath to ensure compatibility with more complex routes
  - 3.0.0 - version 0.19
  - 2.1.0 - switch to webpack-serve (from webpack dev server)
  - 2.0.0
