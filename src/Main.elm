@@ -1,4 +1,4 @@
-port module Main exposing (main)
+port module Main exposing (Model, Msg(..), add1, init, main, toJs, update, view)
 
 import Browser
 import Browser.Navigation as Nav
@@ -72,7 +72,8 @@ view : Model -> Html Msg
 view model =
     div [ class "container" ]
         [ header []
-            [ img [ src "/images/logo.png" ] []
+            [ -- img [ src "/images/logo.png" ] []
+              span [ class "elm-bkg" ] []
             , h1 [] [ text "Elm 0.19 Webpack Starter, featuring hot-loading" ]
             ]
         , p [] [ text "Click on the button below to increment the state." ]
