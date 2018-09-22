@@ -20,3 +20,10 @@ header {
 button {
     margin-right: 15px;
 }
+
+.elm-bkg {
+    background: url('images/logo.png');
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+}
