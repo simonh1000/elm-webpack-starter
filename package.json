@@ -1,7 +1,7 @@
 {
     "author": "Simon Hampton",
     "name": "elm-webpack-starter",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "description": "Elm 0.19 starter with Webpack 4 hot-reloading",
     "main": "index.js",
     "scripts": {
@@ -10,7 +10,7 @@
         "dev": "webpack-serve --port 3000",
         "build": "webpack",
         "prod": "webpack -p",
-        "//postinstall": "elm-package install -y && elm-test init"
+        "postinstall": "elm-test init"
     },
     "repository": {
         "type": "git",
