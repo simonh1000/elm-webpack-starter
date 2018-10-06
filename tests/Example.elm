@@ -18,8 +18,9 @@ unitTest =
     describe "simple unit test"
         [ test "Inc adds one" <|
             \() ->
-                update Inc 0
+                update Inc (Model 0 "")
                     |> Tuple.first
+                    |> .counter
                     |> Expect.equal 1
         ]
 
@@ -30,10 +31,11 @@ fuzzTest : Test
 fuzzTest =
     describe "simple fuzz test"
         [ fuzz int "Inc ALWAYS adds one" <|
-            \model ->
-                update Inc model
+            \ct ->
+                update Inc (Model ct "")
                     |> Tuple.first
-                    |> Expect.equal (model + 1)
+                    |> .counter
+                    |> Expect.equal (ct + 1)
         ]
 
 
