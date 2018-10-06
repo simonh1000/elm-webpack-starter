@@ -1,11 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const history = require('koa-connect-history-api-fallback');
-
-// You will need these if you want to set up a dev server
-// const convert = require('koa-connect');
-// const proxy = require('http-proxy-middleware');
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -108,15 +103,16 @@ if (MODE === "development") {
                 }
             ]
         },
-        serve: {
+        devServer: {
             inline: true,
             stats: "errors-only",
-            content: [path.join(__dirname, "src/assets")],
-            add: (app, middleware, options) => {
-                // routes /xyz -> /index.html
-                app.use(history());
-                // e.g.
-                // app.use(convert(proxy('/api', { target: 'http://localhost:5000' })));
+            contentBase: path.join(__dirname, "src/assets"),
+            historyApiFallback: true,
+            before(app) {
+                // on port 3000
+                app.get("/test", function(req, res) {
+                    res.json({"result": "OK"});
+                });
             }
         }
     });

@@ -1,13 +1,13 @@
 {
     "author": "Simon Hampton",
     "name": "elm-webpack-starter",
-    "version": "3.0.2",
+    "version": "3.1.0",
     "description": "Elm 0.19 starter with Webpack 4 hot-reloading",
     "main": "index.js",
     "scripts": {
         "test": "elm-test",
         "start": "npm run dev",
-        "dev": "webpack-serve --port 3000",
+        "dev": "webpack-dev-server --hot --colors --port 3000",
         "build": "webpack",
         "prod": "webpack -p",
         "postinstall": "elm-test init"
@@ -40,8 +40,8 @@
         "url-loader": "^1.1.1",
         "webpack": "^4.20.2",
         "webpack-cli": "^3.1.2",
-        "webpack-merge": "^4.1.4",
-        "webpack-serve": "^2.0.2"
+        "webpack-dev-server": "^3.1.9",
+        "webpack-merge": "^4.1.4"
     },
     "dependencies": {
         "purecss": "^1.0.0"

@@ -1,5 +1,3 @@
-<img src="https://circleci.com/gh/simonh1000/elm-webpack-starter.png?circle-token=:circle-token">
-
 # Elm 0.19 with Webpack 4, Hot Reloading & Babel 7
 
 Elm dev environment with hot-loading (i.e. state is retained as you edit your code - Hot Module Reloading, HMR)). I use this daily for my professional work. Like elm-community/elm-webpack-starter but using Webpack 4.
@@ -65,6 +63,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.1.0 - Revert to webpack-dev-server with example
  - 3.0.2 - bugfixes (mostly for tests)
  - 3.0.1 - use publicPath to ensure compatibility with more complex routes
  - 3.0.0 - version 0.19
@@ -78,7 +77,6 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
  ## Credits
 
  A long time ago this code was forked from https://github.com/fluxxu/elm-hot-loader
-
 
  ## How it works
 
