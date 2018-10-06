@@ -65,6 +65,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.1.0 - Revert to webpack-dev-server with example
  - 3.0.2 - bugfixes (mostly for tests)
  - 3.0.1 - use publicPath to ensure compatibility with more complex routes
  - 3.0.0 - version 0.19
@@ -78,7 +79,6 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
  ## Credits
 
  A long time ago this code was forked from https://github.com/fluxxu/elm-hot-loader
-
 
  ## How it works
 

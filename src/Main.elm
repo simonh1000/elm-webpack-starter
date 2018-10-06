@@ -5,6 +5,8 @@ import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Http
+import Json.Decode as Decode
 import Url exposing (Url)
 import Url.Parser as UrlParser
 
@@ -13,12 +15,14 @@ port toJs : String -> Cmd msg
 
 
 type alias Model =
-    Int
+    { counter : Int
+    , serverMessage : String
+    }
 
 
 init : Int -> ( Model, Cmd Msg )
 init flags =
-    ( flags, Cmd.none )
+    ( { counter = flags, serverMessage = "" }, Cmd.none )
 
 
 
@@ -42,6 +46,8 @@ init flags =
 type Msg
     = Inc
     | Set Int
+    | TestServer
+    | OnServerResponse (Result Http.Error String)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -51,7 +57,21 @@ update message model =
             ( add1 model, toJs "Hello Js" )
 
         Set m ->
-            ( m, toJs "Hello Js" )
+            ( { model | counter = m }, toJs "Hello Js" )
+
+        TestServer ->
+            ( model
+            , Http.get "/test" (Decode.field "result" Decode.string)
+                |> Http.send OnServerResponse
+            )
+
+        OnServerResponse res ->
+            case res of
+                Ok r ->
+                    ( { model | serverMessage = r }, Cmd.none )
+
+                Err err ->
+                    ( { model | serverMessage = "Error: " ++ Debug.toString err }, Cmd.none )
 
 
 {-| increments the counter
@@ -61,7 +81,7 @@ update message model =
 -}
 add1 : Model -> Model
 add1 model =
-    model + 1
+    { model | counter = model.counter + 1 }
 
 
 
@@ -73,17 +93,28 @@ view model =
     div [ class "container" ]
         [ header []
             [ -- img [ src "/images/logo.png" ] []
-              span [ class "elm-bkg" ] []
-            , h1 [] [ text "Elm 0.19 Webpack Starter, featuring hot-loading" ]
+              span [ class "logo" ] []
+            , h1 [] [ text "Elm 0.19 Webpack Starter, with hot-reloading" ]
             ]
         , p [] [ text "Click on the button below to increment the state." ]
-        , div []
-            [ button
-                [ class "pure-button pure-button-primary"
-                , onClick Inc
+        , div [ class "pure-g" ]
+            [ div [ class "pure-u-1-3" ]
+                [ button
+                    [ class "pure-button pure-button-primary"
+                    , onClick Inc
+                    ]
+                    [ text "+ 1" ]
+                , text <| String.fromInt model.counter
                 ]
-                [ text "+ 1" ]
-            , text <| String.fromInt model
+            , div [ class "pure-u-1-3" ] []
+            , div [ class "pure-u-1-3" ]
+                [ button
+                    [ class "pure-button pure-button-primary"
+                    , onClick TestServer
+                    ]
+                    [ text "ping dev server" ]
+                , text model.serverMessage
+                ]
             ]
         , p [] [ text "Then make a change to the source code and see how the state is retained after you recompile." ]
         , p []
