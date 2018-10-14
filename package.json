@@ -9,8 +9,7 @@
         "start": "npm run dev",
         "dev": "webpack-dev-server --hot --colors --port 3000",
         "build": "webpack",
-        "prod": "webpack -p",
-        "postinstall": "elm-test init"
+        "prod": "webpack -p"
     },
     "repository": {
         "type": "git",
@@ -45,5 +44,8 @@
     },
     "dependencies": {
         "purecss": "^1.0.0"
+    },
+    "prettier": {
+        "tabWidth": 4
     }
 }

@@ -9,7 +9,8 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 // to extract the css as a separate file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-var MODE = process.env.npm_lifecycle_event === "prod" ? "production" : "development";
+var MODE =
+    process.env.npm_lifecycle_event === "prod" ? "production" : "development";
 var filename = MODE == "production" ? "[name]-[hash].js" : "index.js";
 
 var common = {
@@ -17,7 +18,7 @@ var common = {
     entry: "./src/index.js",
     output: {
         path: path.join(__dirname, "dist"),
-        publicPath: '/',
+        publicPath: "/",
         // webpack -p automatically adds hash when building for production
         filename: filename
     },
@@ -90,7 +91,7 @@ if (MODE === "development") {
                     test: /\.elm$/,
                     exclude: [/elm-stuff/, /node_modules/],
                     use: [
-                        { loader: 'elm-hot-webpack-loader' },
+                        { loader: "elm-hot-webpack-loader" },
                         {
                             loader: "elm-webpack-loader",
                             options: {
@@ -111,7 +112,7 @@ if (MODE === "development") {
             before(app) {
                 // on port 3000
                 app.get("/test", function(req, res) {
-                    res.json({"result": "OK"});
+                    res.json({ result: "OK" });
                 });
             }
         }
@@ -146,20 +147,27 @@ if (MODE === "production") {
                 {
                     test: /\.elm$/,
                     exclude: [/elm-stuff/, /node_modules/],
-                    use: [
-                        { loader: "elm-webpack-loader" }
+                    use: {
+                        loader: "elm-webpack-loader"
+                    }
+                },
+                {
+                    test: /\.css$/,
+                    exclude: [/elm-stuff/, /node_modules/],
+                    loaders: [
+                        MiniCssExtractPlugin.loader,
+                        "css-loader?url=false"
                     ]
                 },
-            {
-                test: /\.css$/,
-                exclude: [/elm-stuff/, /node_modules/],
-                loaders: [MiniCssExtractPlugin.loader, "css-loader?url=false"]
-            },
-            {
-                test: /\.scss$/,
-                exclude: [/elm-stuff/, /node_modules/],
-                loaders: [MiniCssExtractPlugin.loader, "css-loader?url=false", "sass-loader"]
-            }
+                {
+                    test: /\.scss$/,
+                    exclude: [/elm-stuff/, /node_modules/],
+                    loaders: [
+                        MiniCssExtractPlugin.loader,
+                        "css-loader?url=false",
+                        "sass-loader"
+                    ]
+                }
             ]
         }
     });
