@@ -5,7 +5,7 @@ import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Http
+import Http exposing (Error(..))
 import Json.Decode as Decode
 import Url exposing (Url)
 import Url.Parser as UrlParser
@@ -71,7 +71,25 @@ update message model =
                     ( { model | serverMessage = r }, Cmd.none )
 
                 Err err ->
-                    ( { model | serverMessage = "Error: " ++ Debug.toString err }, Cmd.none )
+                    let
+                        shortMessaage =
+                            case err of
+                                BadUrl _ ->
+                                    "BadUrl"
+
+                                Timeout ->
+                                    "Timeout"
+
+                                NetworkError ->
+                                    "NetworkError"
+
+                                BadStatus _ ->
+                                    "BadStatus"
+
+                                BadPayload _ _ ->
+                                    "BadPayload"
+                    in
+                    ( { model | serverMessage = "Error: " ++ shortMessaage }, Cmd.none )
 
 
 {-| increments the counter
