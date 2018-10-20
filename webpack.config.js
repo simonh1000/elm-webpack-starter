@@ -70,6 +70,7 @@ var common = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
+                exclude: [/elm-stuff/, /node_modules/],
                 loader: "file-loader"
             }
         ]
@@ -109,6 +110,7 @@ if (MODE === "development") {
             stats: "errors-only",
             contentBase: path.join(__dirname, "src/assets"),
             historyApiFallback: true,
+            // feel free to delete this section if you don't need anything like this
             before(app) {
                 // on port 3000
                 app.get("/test", function(req, res) {
@@ -118,12 +120,11 @@ if (MODE === "development") {
         }
     });
 }
-
 if (MODE === "production") {
     console.log("Building for Production...");
     module.exports = merge(common, {
         plugins: [
-            // Delete everything from output directory and report to user
+            // Delete everything from /dist directory and report to user
             new CleanWebpackPlugin(["dist"], {
                 root: __dirname,
                 exclude: [],
