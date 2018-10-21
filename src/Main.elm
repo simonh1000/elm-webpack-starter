@@ -5,13 +5,23 @@ import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Http
+import Http exposing (Error(..))
 import Json.Decode as Decode
-import Url exposing (Url)
-import Url.Parser as UrlParser
+
+
+
+-- ---------------------------
+-- PORTS
+-- ---------------------------
 
 
 port toJs : String -> Cmd msg
+
+
+
+-- ---------------------------
+-- MODEL
+-- ---------------------------
 
 
 type alias Model =
@@ -26,21 +36,9 @@ init flags =
 
 
 
--- -- URL Parsing and Routing
---
---
--- navigationHandler : Url -> Msg
--- navigationHandler =
---     urlParser >> Set
---
---
--- urlParser : Url -> Int
--- urlParser url =
---     url
---         |> UrlParser.parse UrlParser.int
---         |> Maybe.withDefault 0
---
+-- ---------------------------
 -- UPDATE
+-- ---------------------------
 
 
 type Msg
@@ -71,7 +69,26 @@ update message model =
                     ( { model | serverMessage = r }, Cmd.none )
 
                 Err err ->
-                    ( { model | serverMessage = "Error: " ++ Debug.toString err }, Cmd.none )
+                    ( { model | serverMessage = "Error: " ++ httpErrorToString err }, Cmd.none )
+
+
+httpErrorToString : Http.Error -> String
+httpErrorToString err =
+    case err of
+        BadUrl _ ->
+            "BadUrl"
+
+        Timeout ->
+            "Timeout"
+
+        NetworkError ->
+            "NetworkError"
+
+        BadStatus _ ->
+            "BadStatus"
+
+        BadPayload _ _ ->
+            "BadPayload"
 
 
 {-| increments the counter
@@ -85,7 +102,9 @@ add1 model =
 
 
 
+-- ---------------------------
 -- VIEW
+-- ---------------------------
 
 
 view : Model -> Html Msg
@@ -125,7 +144,9 @@ view model =
 
 
 
---
+-- ---------------------------
+-- MAIN
+-- ---------------------------
 
 
 main : Program Int Model Msg
