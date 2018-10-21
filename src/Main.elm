@@ -11,12 +11,19 @@ import Url exposing (Url)
 import Url.Parser as UrlParser exposing ((</>), Parser)
 
 
+
+-- ---------------------------
+-- PORTS
+-- ---------------------------
+
+
 port toJs : String -> Cmd msg
 
 
-type Page
-    = Counter Int
-    | Server String
+
+-- ---------------------------
+-- MODEL
+-- ---------------------------
 
 
 type alias Model =
@@ -30,8 +37,15 @@ init flags url key =
     ( { key = key, page = UrlParser.parse urlParser url |> Maybe.withDefault (Counter 0) }, Cmd.none )
 
 
+type Page
+    = Counter Int
+    | Server String
 
--- -- URL Parsing and Routing
+
+
+-- ---------------------------
+-- URL Parsing and Routing
+-- ---------------------------
 
 
 handleUrlRequest : Key -> UrlRequest -> Cmd msg
@@ -54,7 +68,9 @@ urlParser =
 
 
 
+-- ---------------------------
 -- UPDATE
+-- ---------------------------
 
 
 type Msg
@@ -100,29 +116,32 @@ update message model =
                     ( { model | page = Server serverMessage }, Cmd.none )
 
                 Err err ->
-                    let
-                        shortMessaage =
-                            case err of
-                                BadUrl _ ->
-                                    "BadUrl"
-
-                                Timeout ->
-                                    "Timeout"
-
-                                NetworkError ->
-                                    "NetworkError"
-
-                                BadStatus _ ->
-                                    "BadStatus"
-
-                                BadPayload _ _ ->
-                                    "BadPayload"
-                    in
-                    ( { model | page = Server <| "Error: " ++ shortMessaage }, Cmd.none )
+                    ( { model | page = Server <| "Error: " ++ httpErrorToString err }, Cmd.none )
 
 
+httpErrorToString : Http.Error -> String
+httpErrorToString err =
+    case err of
+        BadUrl _ ->
+            "BadUrl"
 
+        Timeout ->
+            "Timeout"
+
+        NetworkError ->
+            "NetworkError"
+
+        BadStatus _ ->
+            "BadStatus"
+
+        BadPayload _ _ ->
+            "BadPayload"
+
+
+
+-- ---------------------------
 -- VIEW
+-- ---------------------------
 
 
 view : Model -> Html Msg
@@ -173,7 +192,9 @@ serverPage serverMessage =
 
 
 
---
+-- ---------------------------
+-- MAIN
+-- ---------------------------
 
 
 main : Program Int Model Msg
