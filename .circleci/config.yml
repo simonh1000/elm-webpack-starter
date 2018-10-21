@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
+      # A simple Elm 0.19 docker
       - image: hotbelgo/elm-webpack-starter
 
       # Specify service dependencies here if necessary
