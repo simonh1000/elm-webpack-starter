@@ -1,51 +1,66 @@
-port module Main exposing (Model, Msg(..), add1, init, main, toJs, update, view)
+port module Main exposing (main)
 
-import Browser
-import Browser.Navigation as Nav
+import Browser exposing (UrlRequest(..))
+import Browser.Navigation as Nav exposing (Key)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Http exposing (Error(..))
 import Json.Decode as Decode
 import Url exposing (Url)
-import Url.Parser as UrlParser
+import Url.Parser as UrlParser exposing ((</>), Parser)
 
 
 port toJs : String -> Cmd msg
 
 
+type Page
+    = Counter Int
+    | Server String
+
+
 type alias Model =
-    { counter : Int
-    , serverMessage : String
+    { key : Key
+    , page : Page
     }
 
 
-init : Int -> ( Model, Cmd Msg )
-init flags =
-    ( { counter = flags, serverMessage = "" }, Cmd.none )
+init : Int -> Url -> Key -> ( Model, Cmd Msg )
+init flags url key =
+    ( { key = key, page = UrlParser.parse urlParser url |> Maybe.withDefault (Counter 0) }, Cmd.none )
 
 
 
 -- -- URL Parsing and Routing
---
---
--- navigationHandler : Url -> Msg
--- navigationHandler =
---     urlParser >> Set
---
---
--- urlParser : Url -> Int
--- urlParser url =
---     url
---         |> UrlParser.parse UrlParser.int
---         |> Maybe.withDefault 0
---
+
+
+handleUrlRequest : Key -> UrlRequest -> Cmd msg
+handleUrlRequest key urlRequest =
+    case urlRequest of
+        Internal url ->
+            Nav.pushUrl key (Url.toString url)
+
+        External url ->
+            Nav.load url
+
+
+urlParser : Parser (Page -> msg) msg
+urlParser =
+    UrlParser.oneOf
+        [ UrlParser.map Counter <| UrlParser.s "counter" </> UrlParser.int
+        , UrlParser.map Server <| UrlParser.s "server" </> UrlParser.string
+        , UrlParser.map (Server "") <| UrlParser.s "server"
+        ]
+
+
+
 -- UPDATE
 
 
 type Msg
-    = Inc
-    | Set Int
+    = OnUrlRequest UrlRequest
+    | OnUrlChange Url
+    | Inc
     | TestServer
     | OnServerResponse (Result Http.Error String)
 
@@ -53,11 +68,25 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
-        Inc ->
-            ( add1 model, toJs "Hello Js" )
+        OnUrlRequest urlRequest ->
+            ( model, handleUrlRequest model.key urlRequest )
 
-        Set m ->
-            ( { model | counter = m }, toJs "Hello Js" )
+        OnUrlChange url ->
+            ( { model | page = UrlParser.parse urlParser url |> Maybe.withDefault model.page }, Cmd.none )
+
+        Inc ->
+            case model.page of
+                Counter x ->
+                    let
+                        xx =
+                            x + 1
+                    in
+                    ( { model | page = Counter xx }
+                    , Nav.pushUrl model.key <| "/counter/" ++ String.fromInt xx
+                    )
+
+                _ ->
+                    ( model, Cmd.none )
 
         TestServer ->
             ( model
@@ -67,8 +96,8 @@ update message model =
 
         OnServerResponse res ->
             case res of
-                Ok r ->
-                    ( { model | serverMessage = r }, Cmd.none )
+                Ok serverMessage ->
+                    ( { model | page = Server serverMessage }, Cmd.none )
 
                 Err err ->
                     let
@@ -89,17 +118,7 @@ update message model =
                                 BadPayload _ _ ->
                                     "BadPayload"
                     in
-                    ( { model | serverMessage = "Error: " ++ shortMessaage }, Cmd.none )
-
-
-{-| increments the counter
-
-    add1 5 --> 6
-
--}
-add1 : Model -> Model
-add1 model =
-    { model | counter = model.counter + 1 }
+                    ( { model | page = Server <| "Error: " ++ shortMessaage }, Cmd.none )
 
 
 
@@ -110,35 +129,46 @@ view : Model -> Html Msg
 view model =
     div [ class "container" ]
         [ header []
-            [ -- img [ src "/images/logo.png" ] []
-              span [ class "logo" ] []
+            [ img [ src "/images/logo.png" ] []
             , h1 [] [ text "Elm 0.19 Webpack Starter, with hot-reloading" ]
             ]
-        , p [] [ text "Click on the button below to increment the state." ]
-        , div [ class "pure-g" ]
-            [ div [ class "pure-u-1-3" ]
-                [ button
-                    [ class "pure-button pure-button-primary"
-                    , onClick Inc
-                    ]
-                    [ text "+ 1" ]
-                , text <| String.fromInt model.counter
-                ]
-            , div [ class "pure-u-1-3" ] []
-            , div [ class "pure-u-1-3" ]
-                [ button
-                    [ class "pure-button pure-button-primary"
-                    , onClick TestServer
-                    ]
-                    [ text "ping dev server" ]
-                , text model.serverMessage
-                ]
-            ]
-        , p [] [ text "Then make a change to the source code and see how the state is retained after you recompile." ]
+        , case model.page of
+            Counter counter ->
+                counterPage counter
+
+            Server serverMessage ->
+                serverPage serverMessage
         , p []
             [ text "And now don't forget to add a star to the Github repo "
             , a [ href "https://github.com/simonh1000/elm-webpack-starter" ] [ text "elm-webpack-starter" ]
             ]
+        ]
+
+
+counterPage counter =
+    div [ class "pure-u-1-3" ]
+        [ a [ href "/server/" ] [ text "Switch to server" ]
+        , p [] [ text "Click on the button below to increment the state." ]
+        , button
+            [ class "pure-button pure-button-primary"
+            , onClick Inc
+            ]
+            [ text "+ 1" ]
+        , text <| String.fromInt counter
+        , p [] [ text "Then make a change to the source code and see how the state is retained after you recompile." ]
+        ]
+
+
+serverPage serverMessage =
+    div [ class "pure-u-1-3" ]
+        [ a [ href "/counter/1" ] [ text "Switch to counter" ]
+        , p [] [ text "Test the dev server" ]
+        , button
+            [ class "pure-button pure-button-primary"
+            , onClick TestServer
+            ]
+            [ text "ping dev server" ]
+        , text serverMessage
         ]
 
 
@@ -148,7 +178,7 @@ view model =
 
 main : Program Int Model Msg
 main =
-    Browser.document
+    Browser.application
         { init = init
         , update = update
         , view =
@@ -157,4 +187,6 @@ main =
                 , body = [ view m ]
                 }
         , subscriptions = \_ -> Sub.none
+        , onUrlRequest = OnUrlRequest
+        , onUrlChange = OnUrlChange
         }
