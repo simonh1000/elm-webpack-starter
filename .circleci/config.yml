@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # A simple Elm 0.19 docker
-      - image: hotbelgo/elm-webpack-starter
+      - image: hotbelgo/docker-elm
 
     working_directory: ~/repo
 
