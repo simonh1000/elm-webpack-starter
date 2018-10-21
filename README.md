@@ -57,7 +57,9 @@ If you add dependencies to your main app, then run `elm-test --add-dependencies`
 
 ## Circle CI
 
- - curl https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh --fail --show-error | sudo bash
+```sh
+$ circleci local execute --job build
+```
 
 <hr />
 
