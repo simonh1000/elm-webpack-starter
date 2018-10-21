@@ -55,6 +55,10 @@ If you add dependencies to your main app, then run `elm-test --add-dependencies`
 
 <!-- I have also added [elm-verify-examples](https://github.com/stoeffel/elm-verify-examples) and provided an example in the definition of `add1` in App.elm. -->
 
+## Circle CI
+
+ - curl https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/master/install.sh --fail --show-error | sudo bash
+
 <hr />
 
 ## ES6

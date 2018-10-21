@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: hotbelgo/elm:0.19.0
+      - image: hotbelgo/elm-webpack-starter
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
