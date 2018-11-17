@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
+const elmMinify = require("elm-minify")
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -113,7 +114,7 @@ if (MODE === "development") {
             // feel free to delete this section if you don't need anything like this
             before(app) {
                 // on port 3000
-                app.get("/test", function(req, res) {
+                app.get("/test", function (req, res) {
                     res.json({ result: "OK" });
                 });
             }
@@ -124,6 +125,8 @@ if (MODE === "production") {
     console.log("Building for Production...");
     module.exports = merge(common, {
         plugins: [
+            // Minify elm code
+            new elmMinify.WebpackPlugin(),
             // Delete everything from /dist directory and report to user
             new CleanWebpackPlugin(["dist"], {
                 root: __dirname,
