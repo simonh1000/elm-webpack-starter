@@ -81,10 +81,12 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
  ## How it works
 
- `webpack-serve --hot --colors --port 3000`
- `webpack-serve --hot --host=0.0.0.0 --port 3000`
+ ```
+ webpack-serve --hot --colors --port 3000
+ webpack-serve --hot --host=0.0.0.0 --port 3000
+ ```
 
-  - hot Enable webpack's Hot Module Replacement feature
+  - `--hot` Enable webpack's Hot Module Replacement feature
+  - `--host=0.0.0.0` - enable you to reach your dev environment from another device - e.g  your phone
+  - `--port 3000` - use port 3000 instead of default 8000
   - inline (default) a script will be inserted in your bundle to take care of reloading, and build messages will appear in the browser console.
-  - host=0.0.0.0 - enable you to reach your dev environment from another device - e.g  your phone
-  - port 3000 - use port 3000 instead of default 8000
