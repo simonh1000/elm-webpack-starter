@@ -58,9 +58,12 @@ update message model =
             ( { model | counter = m }, toJs "Hello Js" )
 
         TestServer ->
+            let
+                expect =
+                    Http.expectJson OnServerResponse (Decode.field "result" Decode.string)
+            in
             ( model
-            , Http.get "/test" (Decode.field "result" Decode.string)
-                |> Http.send OnServerResponse
+            , Http.get { url = "/test", expect = expect }
             )
 
         OnServerResponse res ->
@@ -87,8 +90,8 @@ httpErrorToString err =
         BadStatus _ ->
             "BadStatus"
 
-        BadPayload _ _ ->
-            "BadPayload"
+        BadBody s ->
+            "BadBody: " ++ s
 
 
 {-| increments the counter
