@@ -63,6 +63,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.3.0 - Switch to elm/http 2.0.0 (and other deps updates)
  - 3.2.0 - Add elm-minify to prod builds (thanks Asger)
  - 3.1.0 - Revert to webpack-dev-server with example
  - 3.0.2 - bugfixes (mostly for tests)
