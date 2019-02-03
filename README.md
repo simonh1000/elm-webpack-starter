@@ -13,16 +13,21 @@ With npm
 $ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
 $ cd new-project
 $ npm install
+```
+
+## Developing
+
+Start with Elm debug tool
+```sh
 $ npm run dev
 ```
 
-With yarn
+Start WITHOUT Elm debug tool
 ```sh
-$ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
-$ cd new-project
-$ yarn
-$ yarn dev
- ```
+$ npm start
+or
+$ npm run nodebug
+```
 
 Open http://localhost:3000 and start modifying the code in /src.
 (An example using Routing is provided in the `navigation` branch)
@@ -63,6 +68,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.4.0 - Add ability to start dev mode without debug window
  - 3.3.0 - Switch to elm/http 2.0.0 (and other deps updates)
  - 3.2.0 - Add elm-minify to prod builds (thanks Asger)
  - 3.1.0 - Revert to webpack-dev-server with example
