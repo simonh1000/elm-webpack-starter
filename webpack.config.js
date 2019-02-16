@@ -10,8 +10,6 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 // to extract the css as a separate file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-console.log(process.env.npm_lifecycle_event);
-
 // process.env.npm_lifecycle_event =
 //    - prod
 //    - dev
