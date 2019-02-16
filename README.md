@@ -17,17 +17,14 @@ $ npm install
 
 ## Developing
 
-Start with Elm debug tool
-```sh
-$ npm run dev
-```
-
-Start WITHOUT Elm debug tool
+Start with Elm debug tool with either
 ```sh
 $ npm start
 or
-$ npm run nodebug
+$ npm start --nodebug
 ```
+
+the `--nodebug` removes the Elm debug tool. This can become valuable when your model becomes very large.
 
 Open http://localhost:3000 and start modifying the code in /src.
 (An example using Routing is provided in the `navigation` branch)
@@ -68,6 +65,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.5.0 - Simpler means to work with/out the debug window
  - 3.4.0 - Add ability to start dev mode without debug window
  - 3.3.0 - Switch to elm/http 2.0.0 (and other deps updates)
  - 3.2.0 - Add elm-minify to prod builds (thanks Asger)
