@@ -1,17 +1,18 @@
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
+const elmMinify = require("elm-minify");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-
 // to extract the css as a separate file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 var MODE =
     process.env.npm_lifecycle_event === "prod" ? "production" : "development";
-var filename = MODE == "production" ? "[name]-[hash].js" : "index.js";
+var withDebug = !process.env["npm_config_nodebug"];
+console.log('\x1b[36m%s\x1b[0m', `** elm-webpack-starter: mode "${MODE}", withDebug: ${withDebug}\n`);
 
 var common = {
     mode: MODE,
@@ -19,8 +20,8 @@ var common = {
     output: {
         path: path.join(__dirname, "dist"),
         publicPath: "/",
-        // webpack -p automatically adds hash when building for production
-        filename: filename
+        // FIXME webpack -p automatically adds hash when building for production
+        filename: MODE == "production" ? "[name]-[hash].js" : "index.js"
     },
     plugins: [
         new HTMLWebpackPlugin({
@@ -78,7 +79,6 @@ var common = {
 };
 
 if (MODE === "development") {
-    console.log("Building for dev...");
     module.exports = merge(common, {
         plugins: [
             // Suggested for hot-loading
@@ -97,7 +97,8 @@ if (MODE === "development") {
                             loader: "elm-webpack-loader",
                             options: {
                                 // add Elm's debug overlay to output
-                                debug: true,
+                                debug: withDebug,
+                                //
                                 forceWatch: true
                             }
                         }
@@ -121,11 +122,12 @@ if (MODE === "development") {
     });
 }
 if (MODE === "production") {
-    console.log("Building for Production...");
     module.exports = merge(common, {
         plugins: [
-            // Delete everything from /dist directory and report to user
-            new CleanWebpackPlugin(["dist"], {
+            // Minify elm code
+            new elmMinify.WebpackPlugin(),
+            // Delete everything from output-path (/dist) and report to user
+            new CleanWebpackPlugin({
                 root: __dirname,
                 exclude: [],
                 verbose: true,

@@ -13,16 +13,18 @@ With npm
 $ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
 $ cd new-project
 $ npm install
-$ npm run dev
 ```
 
-With yarn
+## Developing
+
+Start with Elm debug tool with either
 ```sh
-$ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
-$ cd new-project
-$ yarn
-$ yarn dev
- ```
+$ npm start
+or
+$ npm start --nodebug
+```
+
+the `--nodebug` removes the Elm debug tool. This can become valuable when your model becomes very large.
 
 Open http://localhost:3000 and start modifying the code in /src.
 (An example using Routing is provided in the `navigation` branch)
@@ -69,6 +71,10 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.5.0 - Simpler means to work with/out the debug window
+ - 3.4.0 - Add ability to start dev mode without debug window
+ - 3.3.0 - Switch to elm/http 2.0.0 (and other deps updates)
+ - 3.2.0 - Add elm-minify to prod builds (thanks Asger)
  - 3.1.0 - Revert to webpack-dev-server with example
  - 3.0.2 - bugfixes (mostly for tests)
  - 3.0.1 - use publicPath to ensure compatibility with more complex routes
@@ -91,7 +97,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
  webpack-serve --hot --host=0.0.0.0 --port 3000
  ```
 
-  - hot Enable webpack's Hot Module Replacement feature
+  - `--hot` Enable webpack's Hot Module Replacement feature
+  - `--host=0.0.0.0` - enable you to reach your dev environment from another device - e.g  your phone
+  - `--port 3000` - use port 3000 instead of default 8000
   - inline (default) a script will be inserted in your bundle to take care of reloading, and build messages will appear in the browser console.
-  - host=0.0.0.0 - enable you to reach your dev environment from another device - e.g  your phone
-  - port 3000 - use port 3000 instead of default 8000
