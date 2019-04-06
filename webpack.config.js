@@ -126,8 +126,8 @@ if (MODE === "production") {
         plugins: [
             // Minify elm code
             new elmMinify.WebpackPlugin(),
-            // Delete everything from /dist directory and report to user
-            new CleanWebpackPlugin(["dist"], {
+            // Delete everything from output-path (/dist) and report to user
+            new CleanWebpackPlugin({
                 root: __dirname,
                 exclude: [],
                 verbose: true,
