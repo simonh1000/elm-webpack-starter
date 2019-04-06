@@ -1,5 +1,7 @@
 # Elm 0.19 with Webpack 4, Hot Reloading & Babel 7
 
+[![CircleCI](https://circleci.com/gh/simonh1000/elm-webpack-starter.svg?style=svg)](https://circleci.com/gh/simonh1000/elm-webpack-starter)
+
 Elm dev environment with hot-loading (i.e. state is retained as you edit your code - Hot Module Reloading, HMR)). I use this daily for my professional work. Like elm-community/elm-webpack-starter but using Webpack 4.
 
 ## Installation
@@ -71,6 +73,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.6.0 - Add CI script
  - 3.5.0 - Simpler means to work with/out the debug window
  - 3.4.0 - Add ability to start dev mode without debug window
  - 3.3.0 - Switch to elm/http 2.0.0 (and other deps updates)
