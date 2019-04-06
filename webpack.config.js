@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const elmMinify = require("elm-minify");
+const ClosurePlugin = require('closure-webpack-plugin');
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -123,9 +123,19 @@ if (MODE === "development") {
 }
 if (MODE === "production") {
     module.exports = merge(common, {
-        plugins: [
-            // Minify elm code
-            new elmMinify.WebpackPlugin(),
+        optimization: {
+            minimizer: [
+              new ClosurePlugin({mode: 'STANDARD'}, {
+                // compiler flags here
+                //
+                // for debugging help, try these:
+                //
+                formatting: 'PRETTY_PRINT'
+                // debug: true,
+                // renaming: false
+              })
+            ]
+          }, plugins: [
             // Delete everything from output-path (/dist) and report to user
             new CleanWebpackPlugin({
                 root: __dirname,
