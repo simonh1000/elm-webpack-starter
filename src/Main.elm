@@ -1,10 +1,9 @@
 port module Main exposing (Model, Msg(..), add1, init, main, toJs, update, view)
 
 import Browser
-import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (..)
+import Html.Events exposing (onClick)
 import Http exposing (Error(..))
 import Json.Decode as Decode
 
