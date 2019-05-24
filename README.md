@@ -59,6 +59,14 @@ If you add dependencies to your main app, then run `elm-test --add-dependencies`
 
 <!-- I have also added [elm-verify-examples](https://github.com/stoeffel/elm-verify-examples) and provided an example in the definition of `add1` in App.elm. -->
 
+## Elm-analyse
+
+Elm-analyse is a "tool that allows you to analyse your Elm code, identify deficiencies and apply best practices." Its built into this starter, just run the following to see how your code is getting on:
+
+```sh
+$ npm run analyse
+```
+
 ## Circle CI
 
 ```sh
@@ -73,6 +81,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.7.0 - Add elm-analyse
  - 3.6.0 - Add CI script
  - 3.5.0 - Simpler means to work with/out the debug window
  - 3.4.0 - Add ability to start dev mode without debug window
