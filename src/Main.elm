@@ -7,7 +7,7 @@ import Html.Events exposing (onClick)
 import Http exposing (Error(..))
 import Json.Decode as Decode
 
-
+import Markdown
 
 -- ---------------------------
 -- PORTS
@@ -112,7 +112,8 @@ add1 model =
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ header []
+        [ Markdown.toHtml [] "# hello world"
+         , header []
             [ -- img [ src "/images/logo.png" ] []
               span [ class "logo" ] []
             , h1 [] [ text "Elm 0.19 Webpack Starter, with hot-reloading" ]
