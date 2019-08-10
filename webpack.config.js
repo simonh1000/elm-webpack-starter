@@ -5,7 +5,7 @@ const ClosurePlugin = require('closure-webpack-plugin');
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // to extract the css as a separate file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
