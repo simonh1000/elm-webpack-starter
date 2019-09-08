@@ -28,8 +28,9 @@ $ npm start --nodebug
 
 the `--nodebug` removes the Elm debug tool. This can become valuable when your model becomes very large.
 
-Open http://localhost:3000 and start modifying the code in /src.
-(An example using Routing is provided in the `navigation` branch)
+Open http://localhost:3000 and start modifying the code in /src.  **Note** that this starter expects you have installed [elm-format globally](https://github.com/avh4/elm-format#installation-). 
+
+An example using Routing is provided in the `navigation` branch
 
 ## Production
 
@@ -81,6 +82,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.8.0 - Update deps
  - 3.7.0 - Add elm-analyse
  - 3.6.0 - Add CI script
  - 3.5.0 - Simpler means to work with/out the debug window
