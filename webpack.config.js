@@ -132,8 +132,8 @@ if (MODE === "production") {
                 //
                 // for debugging help, try these:
                 //
-                formatting: 'PRETTY_PRINT',
-                debug: true
+                // formatting: 'PRETTY_PRINT',
+                // debug: true
                 // renaming: false
               })
             ]
