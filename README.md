@@ -82,6 +82,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.9.0 - Switch the closure compiler
  - 3.8.0 - Update deps
  - 3.7.0 - Add elm-analyse
  - 3.6.0 - Add CI script
