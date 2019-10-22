@@ -82,7 +82,8 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
- - 3.9.0 - Switch the closure compiler
+ - 3.9.1 - Version 0.19.1
+ - 3.9.0 - Switch the closure compiler for minification in prod
  - 3.8.0 - Update deps
  - 3.7.0 - Add elm-analyse
  - 3.6.0 - Add CI script
@@ -93,7 +94,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
  - 3.1.0 - Revert to webpack-dev-server with example
  - 3.0.2 - bugfixes (mostly for tests)
  - 3.0.1 - use publicPath to ensure compatibility with more complex routes
- - 3.0.0 - version 0.19
+ - 3.0.0 - Version 0.19
  - 2.1.0 - switch to webpack-serve (from webpack dev server)
  - 2.0.0
     - Remove Bootstrap (use purecss as simple alternative - you don't want me choosing your css framework after all)
@@ -101,18 +102,17 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
  - 1.2.0 - Webpack 4, Babel 7
  - 1.1.0 - add elm-verify-examples
 
+ ## How it works
+
+`npm run dev` maps to `webpack-dev-server --hot --colors --port 3000` where
+
+  - `--hot` Enable webpack's Hot Module Replacement feature
+  - `--port 3000` - use port 3000 instead of default 8000
+  - inline (default) a script will be inserted in your bundle to take care of reloading, and build messages will appear in the browser console.
+  - `--colors` should show the colours created in the original Elm errors, but does not (To Fix)
+  
+One alternative is to run `webpack-dev-server --hot --colors --host=0.0.0.0 --port 3000` which will enable your dev server to be reached from other computers on your local network
+
  ## Credits
 
  A long time ago this code was forked from https://github.com/fluxxu/elm-hot-loader
-
- ## How it works
-
- ```
- webpack-serve --hot --colors --port 3000
- webpack-serve --hot --host=0.0.0.0 --port 3000
- ```
-
-  - `--hot` Enable webpack's Hot Module Replacement feature
-  - `--host=0.0.0.0` - enable you to reach your dev environment from another device - e.g  your phone
-  - `--port 3000` - use port 3000 instead of default 8000
-  - inline (default) a script will be inserted in your bundle to take care of reloading, and build messages will appear in the browser console.
