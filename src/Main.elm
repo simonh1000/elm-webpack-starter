@@ -77,8 +77,8 @@ update message model =
 httpErrorToString : Http.Error -> String
 httpErrorToString err =
     case err of
-        BadUrl _ ->
-            "BadUrl"
+        BadUrl url ->
+            "BadUrl: " ++ url
 
         Timeout ->
             "Timeout"
