@@ -82,6 +82,8 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.9.3 - Update deps
+ - 3.9.2 - Update elm/core and other deps
  - 3.9.1 - Version 0.19.1
  - 3.9.0 - Switch the closure compiler for minification in prod
  - 3.8.0 - Update deps
@@ -111,7 +113,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
   - inline (default) a script will be inserted in your bundle to take care of reloading, and build messages will appear in the browser console.
   - `--colors` should show the colours created in the original Elm errors, but does not (To Fix)
   
-One alternative is to run `webpack-dev-server --hot --colors --host=0.0.0.0 --port 3000` which will enable your dev server to be reached from other computers on your local network
+One alternative is to run `npx webpack-dev-server --hot --colors --host=0.0.0.0 --port 3000` which will enable your dev server to be reached from other computers on your local network
 
  ## Credits
 
