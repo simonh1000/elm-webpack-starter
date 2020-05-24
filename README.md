@@ -51,7 +51,7 @@ Just add to `src/assets/` and the production build copies them to `/dist`
 `elm-test init` is run when you install your dependencies. After that all you need to do to run the tests is
 
 ```
-yarn test
+npm test
 ```
 
 Take a look at the examples in `tests/`
