@@ -82,6 +82,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 3.10.0 - Css minify
  - 3.9.3 - Update deps
  - 3.9.2 - Update elm/core and other deps
  - 3.9.1 - Version 0.19.1
