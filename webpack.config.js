@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const merge = require("webpack-merge");
+const { merge } = require('webpack-merge');
 
 const ClosurePlugin = require("closure-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -13,7 +13,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 var MODE =
     process.env.npm_lifecycle_event === "prod" ? "production" : "development";
-var withDebug = !process.env["npm_config_nodebug"] && MODE == "development";
+var withDebug = !process.env["npm_config_nodebug"] && MODE === "development";
 // this may help for Yarn users
 // var withDebug = !npmParams.includes("--nodebug");
 console.log(
@@ -28,7 +28,7 @@ var common = {
         path: path.join(__dirname, "dist"),
         publicPath: "/",
         // FIXME webpack -p automatically adds hash when building for production
-        filename: MODE == "production" ? "[name]-[hash].js" : "index.js"
+        filename: MODE === "production" ? "[name]-[hash].js" : "index.js"
     },
     plugins: [
         new HTMLWebpackPlugin({
