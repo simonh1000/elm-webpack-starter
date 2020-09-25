@@ -1,11 +1,11 @@
 const path = require("path");
 const webpack = require("webpack");
-const { merge } = require('webpack-merge');
+const {merge} = require('webpack-merge');
 
 const ClosurePlugin = require("closure-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 // Production CSS assets - separate, minimised file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -99,7 +99,7 @@ if (MODE === "development") {
                     test: /\.elm$/,
                     exclude: [/elm-stuff/, /node_modules/],
                     use: [
-                        { loader: "elm-hot-webpack-loader" },
+                        {loader: "elm-hot-webpack-loader"},
                         {
                             loader: "elm-webpack-loader",
                             options: {
@@ -121,8 +121,8 @@ if (MODE === "development") {
             // feel free to delete this section if you don't need anything like this
             before(app) {
                 // on port 3000
-                app.get("/test", function(req, res) {
-                    res.json({ result: "OK" });
+                app.get("/test", function (req, res) {
+                    res.json({result: "OK"});
                 });
             }
         }
@@ -134,7 +134,7 @@ if (MODE === "production") {
         optimization: {
             minimizer: [
                 new ClosurePlugin(
-                    { mode: "STANDARD" },
+                    {mode: "STANDARD"},
                     {
                         // compiler flags here
                         //
@@ -157,11 +157,13 @@ if (MODE === "production") {
                 dry: false
             }),
             // Copy static assets
-            new CopyWebpackPlugin([
-                {
-                    from: "src/assets"
-                }
-            ]),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: "src/assets"
+                    }
+                ]
+            }),
             new MiniCssExtractPlugin({
                 // Options similar to the same options in webpackOptions.output
                 // both options are optional
