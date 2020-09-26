@@ -87,12 +87,10 @@ var common = {
 
 if (MODE === "development") {
     module.exports = merge(common, {
-        plugins: [
-            // Suggested for hot-loading
-            new webpack.NamedModulesPlugin(),
+        optimization: {
             // Prevents compilation errors causing the hot loader to lose state
-            new webpack.NoEmitOnErrorsPlugin()
-        ],
+            noEmitOnErrors: true
+        },
         module: {
             rules: [
                 {

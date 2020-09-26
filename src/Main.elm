@@ -42,7 +42,6 @@ init flags =
 
 type Msg
     = Inc
-    | Set Int
     | TestServer
     | OnServerResponse (Result Http.Error String)
 
@@ -51,10 +50,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update message model =
     case message of
         Inc ->
-            ( add1 model, toJs "Hello Js" )
-
-        Set m ->
-            ( { model | counter = m }, toJs "Hello Js" )
+            ( add1 model, toJs "Inc" )
 
         TestServer ->
             let
