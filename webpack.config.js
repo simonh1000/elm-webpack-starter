@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const {merge} = require('webpack-merge');
 
 const ClosurePlugin = require("closure-webpack-plugin");
@@ -55,20 +54,22 @@ var common = {
                 test: /\.scss$/,
                 exclude: [/elm-stuff/, /node_modules/],
                 // see https://github.com/webpack-contrib/css-loader#url
-                loaders: ["style-loader", "css-loader?url=false", "sass-loader"]
+                use: ["style-loader", "css-loader?url=false", "sass-loader"]
             },
             {
                 test: /\.css$/,
                 exclude: [/elm-stuff/, /node_modules/],
-                loaders: ["style-loader", "css-loader?url=false"]
+                use: ["style-loader", "css-loader?url=false"]
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 exclude: [/elm-stuff/, /node_modules/],
-                loader: "url-loader",
-                options: {
-                    limit: 10000,
-                    mimetype: "application/font-woff"
+                use: {
+                    loader: "url-loader",
+                    options: {
+                        limit: 10000,
+                        mimetype: "application/font-woff"
+                    }
                 }
             },
             {
@@ -183,7 +184,7 @@ if (MODE === "production") {
                 {
                     test: /\.css$/,
                     exclude: [/elm-stuff/, /node_modules/],
-                    loaders: [
+                    use: [
                         MiniCssExtractPlugin.loader,
                         "css-loader?url=false"
                     ]
@@ -191,7 +192,7 @@ if (MODE === "production") {
                 {
                     test: /\.scss$/,
                     exclude: [/elm-stuff/, /node_modules/],
-                    loaders: [
+                    use: [
                         MiniCssExtractPlugin.loader,
                         "css-loader?url=false",
                         "sass-loader"
