@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const {merge} = require('webpack-merge');
 
 const ClosurePlugin = require("closure-webpack-plugin");
@@ -55,12 +54,12 @@ var common = {
                 test: /\.scss$/,
                 exclude: [/elm-stuff/, /node_modules/],
                 // see https://github.com/webpack-contrib/css-loader#url
-                use: [{loader: "style-loader"}, {loader: "css-loader?url=false"}, {loader: "sass-loader"}]
+                use: ["style-loader", "css-loader?url=false", "sass-loader"]
             },
             {
                 test: /\.css$/,
                 exclude: [/elm-stuff/, /node_modules/],
-                use: [{loader: "style-loader"}, {loader: "css-loader?url=false"}]
+                use: ["style-loader", "css-loader?url=false"]
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -71,7 +70,7 @@ var common = {
                         limit: 10000,
                         mimetype: "application/font-woff"
                     }
-                },
+                }
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -183,7 +182,7 @@ if (MODE === "production") {
                 {
                     test: /\.css$/,
                     exclude: [/elm-stuff/, /node_modules/],
-                    loaders: [
+                    use: [
                         MiniCssExtractPlugin.loader,
                         "css-loader?url=false"
                     ]
@@ -191,7 +190,7 @@ if (MODE === "production") {
                 {
                     test: /\.scss$/,
                     exclude: [/elm-stuff/, /node_modules/],
-                    loaders: [
+                    use: [
                         MiniCssExtractPlugin.loader,
                         "css-loader?url=false",
                         "sass-loader"

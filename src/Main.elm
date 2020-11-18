@@ -132,7 +132,7 @@ view model =
                 , text model.serverMessage
                 ]
             ]
-        , p [] [ text "Then make a change to the source code and see how the state is retained after you recompile." ]
+        , p [] [ text "Then make a change to the source code and see how the state is retained after recompilation." ]
         , p []
             [ text "And now don't forget to add a star to the Github repo "
             , a [ href "https://github.com/simonh1000/elm-webpack-starter" ] [ text "elm-webpack-starter" ]
