@@ -55,31 +55,33 @@ var common = {
                 test: /\.scss$/,
                 exclude: [/elm-stuff/, /node_modules/],
                 // see https://github.com/webpack-contrib/css-loader#url
-                loaders: ["style-loader", "css-loader?url=false", "sass-loader"]
+                use: [{loader: "style-loader"}, {loader: "css-loader?url=false"}, {loader: "sass-loader"}]
             },
             {
                 test: /\.css$/,
                 exclude: [/elm-stuff/, /node_modules/],
-                loaders: ["style-loader", "css-loader?url=false"]
+                use: [{loader: "style-loader"}, {loader: "css-loader?url=false"}]
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 exclude: [/elm-stuff/, /node_modules/],
-                loader: "url-loader",
-                options: {
-                    limit: 10000,
-                    mimetype: "application/font-woff"
-                }
+                use: {
+                    loader: "url-loader",
+                    options: {
+                        limit: 10000,
+                        mimetype: "application/font-woff"
+                    }
+                },
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 exclude: [/elm-stuff/, /node_modules/],
-                loader: "file-loader"
+                use: {loader: "file-loader"}
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
                 exclude: [/elm-stuff/, /node_modules/],
-                loader: "file-loader"
+                use: {loader: "file-loader"}
             }
         ]
     }
@@ -89,7 +91,7 @@ if (MODE === "development") {
     module.exports = merge(common, {
         optimization: {
             // Prevents compilation errors causing the hot loader to lose state
-            noEmitOnErrors: true
+            emitOnErrors: false
         },
         module: {
             rules: [
@@ -102,9 +104,7 @@ if (MODE === "development") {
                             loader: "elm-webpack-loader",
                             options: {
                                 // add Elm's debug overlay to output
-                                debug: withDebug,
-                                //
-                                forceWatch: true
+                                debug: withDebug
                             }
                         }
                     ]
