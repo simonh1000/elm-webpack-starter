@@ -1,4 +1,4 @@
-# Elm 0.19.1 with Webpack 4, Hot Reloading & Babel 7
+# Elm 0.19.1 with Webpack 5, Hot Reloading & Babel 7
 
 [![CircleCI](https://circleci.com/gh/simonh1000/elm-webpack-starter.svg?style=svg)](https://circleci.com/gh/simonh1000/elm-webpack-starter)
 
@@ -82,7 +82,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
- - 3.11.0 - Weboack 5, elm-loader 7
+ - 3.11.0 - Webpack 5, elm-webpack-loader 7
  - 3.10.4 - Use better webpack defaults in dev mode
  - 3.10.0 - Css minify
  - 3.9.3 - Update deps
