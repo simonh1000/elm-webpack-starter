@@ -22,6 +22,7 @@ console.log(
 
 var common = {
     mode: MODE,
+    context: path.resolve(__dirname),
     entry: "./src/index.js",
     output: {
         path: path.join(__dirname, "dist"),
@@ -114,6 +115,7 @@ if (MODE === "development") {
             inline: true,
             stats: "errors-only",
             contentBase: path.join(__dirname, "src/assets"),
+            publicPath: "/",
             historyApiFallback: true,
             // feel free to delete this section if you don't need anything like this
             before(app) {
