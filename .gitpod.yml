@@ -1,0 +1,3 @@
+tasks:
+  - init: npm install && npm start
+    command: npm start
