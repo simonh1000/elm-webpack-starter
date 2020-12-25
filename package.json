@@ -1,7 +1,7 @@
 {
     "author": "Simon Hampton",
     "name": "elm-webpack-starter",
-    "version": "3.10.5",
+    "version": "3.11.0",
     "description": "Elm 0.19 starter with Webpack 5 hot-reloading",
     "main": "index.js",
     "scripts": {
@@ -9,7 +9,7 @@
         "start": "npm run dev",
         "dev": "webpack serve --hot --port 3000",
         "build": "webpack",
-        "prod": "webpack -p",
+        "prod": "webpack --mode production",
         "analyse": "elm-analyse -s -p 3001 -o"
     },
     "repository": {
