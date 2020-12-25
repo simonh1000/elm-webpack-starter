@@ -23,8 +23,12 @@ module.exports = {
         extensions: [".elm", ".js"]
     },
     devServer: {
-        contentBase: './dist',
+        contentBase: 'src/assets',
         port: 3000
+    },
+    optimization: {
+        // Prevents compilation errors causing the hot loader to lose state
+        emitOnErrors: false
     },
     module: {
         rules: [
@@ -35,6 +39,7 @@ module.exports = {
                 test: /\.elm$/,
                 exclude: [/elm-stuff/, /node_modules/],
                 use: [
+                    {loader: "elm-hot-webpack-loader"},
                     {
                         loader: "elm-webpack-loader",
                         options: {
