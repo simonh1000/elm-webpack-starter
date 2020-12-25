@@ -110,6 +110,7 @@ view model =
     div [ class "container" ]
         [ header [ class "pure-g" ]
             [ span [ class "pure-u-1-5" ] [ img [ src "/images/logo.png" ] [] ]
+            , span [ class "pure-u-1-5 icon" ] []
             , h1 [ class "pure-u-4-5" ] [ text "Elm 0.19.1 Webpack Starter, with hot-reloading" ]
             ]
         , p [] [ text "Click on the button below to increment the state." ]
