@@ -2,7 +2,7 @@ module.exports = {
     purge: {
         mode: 'layers',
         layers: [],
-        content: [],
+        content: ['./src/*.elm', './src/**/*.elm'],
     },
     theme: {
         extend: {}
