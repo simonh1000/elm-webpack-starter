@@ -107,26 +107,25 @@ add1 model =
 
 view : Model -> Html Msg
 view model =
-    div [ class "container" ]
-        [ header [ class "pure-g" ]
-            [ span [ class "pure-u-1-5" ] [ img [ src "/images/logo.png" ] [] ]
-            , span [ class "pure-u-1-5 icon" ] []
-            , h1 [ class "pure-u-4-5" ] [ text "Elm 0.19.1 Webpack Starter, with hot-reloading" ]
+    div [ class "container p-2" ]
+        [ header [ class "grid-cols-3" ]
+            [ span [] [ img [ src "/images/logo.png" ] [] ]
+            , div [] [ span [ class "icon" ] [] ]
+            , h1 [ class "text-2xl font-bold ml-2" ] [ text "Elm 0.19.1 Webpack Starter, with hot-reloading" ]
             ]
         , p [] [ text "Click on the button below to increment the state." ]
-        , div [ class "pure-g" ]
-            [ div [ class "pure-u-1-3" ]
+        , div [ class "flex flex-row justify-between" ]
+            [ div []
                 [ button
-                    [ class "pure-button pure-button-primary"
+                    [ class "border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
                     , onClick Inc
                     ]
                     [ text "+ 1" ]
                 , text <| String.fromInt model.counter
                 ]
-            , div [ class "pure-u-1-3" ] []
-            , div [ class "pure-u-1-3" ]
+            , div [ class "flex flex-row align-center" ]
                 [ button
-                    [ class "pure-button pure-button-primary"
+                    [ class "border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
                     , onClick TestServer
                     ]
                     [ text "ping dev server" ]

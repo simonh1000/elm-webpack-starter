@@ -23,8 +23,18 @@ module.exports = {
         extensions: [".elm", ".js"]
     },
     devServer: {
-        contentBase: 'src/assets',
-        port: 3000
+        inline: true,
+        stats: "errors-only",
+        contentBase: path.join(__dirname, "src/assets"),
+        publicPath: "/",
+        historyApiFallback: true,
+        // feel free to delete this section if you don't need anything like this
+        before(app) {
+            // on port 3000
+            app.get("/test", function (req, res) {
+                res.json({result: "OK"});
+            });
+        }
     },
     optimization: {
         // Prevents compilation errors causing the hot loader to lose state
@@ -33,8 +43,18 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.scss$/i,
-                use: ['style-loader', 'css-loader', "sass-loader"],
+                test: /\.(sa|sc|c)ss$/i,
+                use: ['style-loader', 'css-loader', {
+                    loader: "postcss-loader",
+                    options: {
+                        postcssOptions: {
+                            plugins: [
+                                require("tailwindcss")("./tailwind.config.js"),
+                                require("autoprefixer"),
+                            ],
+                        },
+                    }
+                }, "sass-loader"],
             }, {
                 test: /\.elm$/,
                 exclude: [/elm-stuff/, /node_modules/],
