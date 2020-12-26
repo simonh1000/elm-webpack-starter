@@ -14,6 +14,23 @@ const common = require('./webpack.common.js');
 
 const prod = {
     mode: 'production',
+    optimization: {
+        minimizer: [
+            new ClosurePlugin(
+                {mode: "STANDARD"},
+                {
+                    // compiler flags here
+                    //
+                    // for debugging help, try these:
+                    //
+                    // formatting: 'PRETTY_PRINT',
+                    // debug: true
+                    // renaming: false
+                }
+            ),
+            new OptimizeCSSAssetsPlugin({})
+        ]
+    },
     plugins: [
         // Copy static assets
         new CopyWebpackPlugin({
