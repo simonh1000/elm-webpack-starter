@@ -115,7 +115,7 @@ view model =
             ]
         , p [] [ text "Click on the button below to increment the state." ]
         , div [ class "flex flex-row justify-between" ]
-            [ div []
+            [ div [ class "flex flex-row items-center" ]
                 [ button
                     [ class "border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
                     , onClick Inc
@@ -123,7 +123,7 @@ view model =
                     [ text "+ 1" ]
                 , text <| String.fromInt model.counter
                 ]
-            , div [ class "flex flex-row align-center" ]
+            , div [ class "flex flex-row items-center" ]
                 [ button
                     [ class "border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
                     , onClick TestServer

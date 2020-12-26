@@ -21,9 +21,9 @@ $ npm install
 
 Start with Elm debug tool with either
 ```sh
-$ npm start
-or
-$ npm start --nodebug
+$ npm start  (== npm run dev)
+# or for development with the Elm debugger
+$ npm run nodebug
 ```
 
 the `--nodebug` removes the Elm debug tool. This can become valuable when your model becomes very large.

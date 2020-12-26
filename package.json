@@ -6,10 +6,11 @@
     "main": "index.js",
     "scripts": {
         "test": "elm-test",
-        "start": "webpack serve --hot --port 3000",
-        "dev": "webpack serve --hot --port 3000",
+        "start": "npm run dev",
+        "dev": "webpack serve --port 3000 --config webpack.dev.js",
+        "nodebug": "webpack serve --port 3000 --config webpack.dev.js --env nodebug",
         "build": "webpack",
-        "prod": "webpack --mode production",
+        "prod": "webpack --config webpack.prod.js",
         "analyse": "elm-analyse -s -p 3001 -o"
     },
     "repository": {
