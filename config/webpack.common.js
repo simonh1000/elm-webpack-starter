@@ -7,20 +7,20 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 module.exports = (withDebug) => {
     return {
         entry: './src/index.js',
+        output: {
+            path: path.resolve(__dirname, '../dist'),
+            filename: 'bundle.js'
+        },
+        resolve: {
+            modules: [path.join(__dirname, "../src"), 'node_modules'],
+            extensions: [".elm", ".js"]
+        },
         plugins: [
             new HtmlWebpackPlugin({
                 title: 'Elm Webpack Starter',
             }),
             new CleanWebpackPlugin(),
         ],
-        output: {
-            path: path.resolve(__dirname, 'dist'),
-            filename: 'bundle.js'
-        },
-        resolve: {
-            modules: [path.join(__dirname, "src"), 'node_modules'],
-            extensions: [".elm", ".js"]
-        },
         optimization: {
             // Prevents compilation errors causing the hot loader to lose state
             emitOnErrors: false
@@ -34,7 +34,7 @@ module.exports = (withDebug) => {
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    require("tailwindcss")("./tailwind.config.js"),
+                                    require("tailwindcss")("./config/tailwind.config.js"),
                                     require("autoprefixer"),
                                 ],
                             },
@@ -42,7 +42,6 @@ module.exports = (withDebug) => {
                     }, "sass-loader"],
                 }, {
                     test: /\.elm$/,
-                    exclude: [/elm-stuff/, /node_modules/],
                     use: [
                         {loader: "elm-hot-webpack-loader"},
                         {

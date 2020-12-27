@@ -1,10 +1,6 @@
-const path = require('path');
-
 const {merge} = require('webpack-merge');
 const ClosurePlugin = require("closure-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 // Production CSS assets - separate, minimised file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -50,7 +46,6 @@ const prod = {
         rules: [
             {
                 test: /\.elm$/,
-                exclude: [/elm-stuff/, /node_modules/],
                 use: {
                     loader: "elm-webpack-loader",
                     options: {
@@ -60,7 +55,6 @@ const prod = {
             },
             {
                 test: /\.(sa|sc|c)ss$/i,
-                exclude: [/elm-stuff/, /node_modules/],
                 use: [
                     {loader: MiniCssExtractPlugin.loader, options: {publicPath: ""}},
                     "css-loader",
@@ -69,7 +63,7 @@ const prod = {
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    require("tailwindcss")("./tailwind.config.js"),
+                                    require("tailwindcss")("./config/tailwind.config.js"),
                                     require("autoprefixer"),
                                 ],
                             },

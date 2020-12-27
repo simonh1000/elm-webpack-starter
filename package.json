@@ -5,13 +5,13 @@
   "description": "Elm 0.19 starter with Webpack 5 hot-reloading",
   "main": "index.js",
   "scripts": {
-    "test": "elm-test",
-    "start": "npm run dev",
-    "dev": "webpack serve --port 3000 --config webpack.dev.js",
-    "nodebug": "webpack serve --port 3000 --config webpack.dev.js --env nodebug",
+    "analyse": "elm-analyse -s -p 3001 -o",
     "build": "webpack",
-    "prod": "NODE_ENV=production webpack --config webpack.prod.js",
-    "analyse": "elm-analyse -s -p 3001 -o"
+    "dev": "webpack serve --port 3000 --config config/webpack.dev.js",
+    "nodebug": "webpack serve --port 3000 --config config/webpack.dev.js --env nodebug",
+    "prod": "NODE_ENV=production webpack --config config/webpack.prod.js",
+    "start": "npm run dev",
+    "test": "elm-test"
   },
   "repository": {
     "type": "git",
