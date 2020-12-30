@@ -1,7 +1,8 @@
 const {merge} = require('webpack-merge');
-const ClosurePlugin = require("closure-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+// JS minification
+const ClosurePlugin = require("closure-webpack-plugin");
 // Production CSS assets - separate, minimised file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -14,15 +15,7 @@ const prod = {
         minimizer: [
             new ClosurePlugin(
                 {mode: "STANDARD"},
-                {
-                    // compiler flags here
-                    //
-                    // for debugging help, try these:
-                    //
-                    // formatting: 'PRETTY_PRINT',
-                    // debug: true
-                    // renaming: false
-                }
+                {}
             ),
             new OptimizeCSSAssetsPlugin({})
         ]
@@ -30,15 +23,10 @@ const prod = {
     plugins: [
         // Copy static assets
         new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: "src/assets"
-                }
-            ]
+            patterns: [{from: "src/assets"}]
         }),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
-            // both options are optional
             filename: "[name]-[chunkhash].css"
         })
     ],

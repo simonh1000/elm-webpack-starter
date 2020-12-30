@@ -10,7 +10,7 @@ const dev = {
         inline: true,
         hot: true,
         stats: "errors-only",
-        contentBase: path.join(__dirname, "src/assets"),
+        contentBase: path.join(__dirname, "../src/assets"),
         publicPath: "/",
         historyApiFallback: true,
         // feel free to delete this section if you don't need anything like this
@@ -24,7 +24,6 @@ const dev = {
 };
 
 module.exports = env => {
-    const withDebug = env.nodebug;
-    console.log(withDebug);
+    const withDebug = !env.nodebug;
     return merge(common(withDebug), dev);
 }

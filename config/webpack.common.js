@@ -17,7 +17,7 @@ module.exports = (withDebug) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                title: 'Elm Webpack Starter',
+                title: 'Updated by Elm',
             }),
             new CleanWebpackPlugin(),
         ],
@@ -28,19 +28,6 @@ module.exports = (withDebug) => {
         module: {
             rules: [
                 {
-                    test: /\.(sa|sc|c)ss$/i,
-                    use: ['style-loader', 'css-loader', {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    require("tailwindcss")("./config/tailwind.config.js"),
-                                    require("autoprefixer"),
-                                ],
-                            },
-                        }
-                    }, "sass-loader"],
-                }, {
                     test: /\.elm$/,
                     use: [
                         {loader: "elm-hot-webpack-loader"},
@@ -54,6 +41,26 @@ module.exports = (withDebug) => {
                         }
                     ]
                 }, {
+                    test: /\.(sa|sc|c)ss$/i,
+                    use: ['style-loader', 'css-loader', {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    require("tailwindcss")("./config/tailwind.config.js"),
+                                    require("autoprefixer"),
+                                ],
+                            },
+                        }
+                    }, "sass-loader"],
+                }, {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: "babel-loader"
+                    }
+                },
+                {
                     test: /\.(png|svg|jpg|jpeg|gif)$/i,
                     type: 'asset/resource',
                 },
