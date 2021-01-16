@@ -1,4 +1,4 @@
-# Elm 0.19.1 + Tailwind, with Webpack 5 Hot Reloading
+# Elm 0.19.1 + Tailwind, with Webpack 5
 
 [![CircleCI](https://circleci.com/gh/simonh1000/elm-webpack-starter.svg?style=svg)](https://circleci.com/gh/simonh1000/elm-webpack-starter)
 

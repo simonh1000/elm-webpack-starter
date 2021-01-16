@@ -2,7 +2,7 @@
   "author": "Simon Hampton",
   "name": "elm-webpack-starter",
   "version": "4.0.0",
-  "description": "Elm 0.19 starter with Webpack 5 hot-reloading",
+  "description": "Elm 0.19 starter with Webpack 5 & Tailwind",
   "main": "index.js",
   "scripts": {
     "analyse": "elm-analyse -s -p 3001 -o",
@@ -53,6 +53,9 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {},
+  "engines": {
+    "node": ">=12"
+  },
   "prettier": {
     "tabWidth": 4
   }
