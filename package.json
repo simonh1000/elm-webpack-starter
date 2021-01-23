@@ -7,8 +7,8 @@
   "scripts": {
     "analyse": "elm-analyse -s -p 3001 -o",
     "build": "webpack",
-    "dev": "webpack serve --port 3000 --config config/webpack.dev.js",
-    "nodebug": "webpack serve --port 3000 --config config/webpack.dev.js --env nodebug",
+    "dev": "webpack serve --watch --port 3000 --config config/webpack.dev.js",
+    "nodebug": "webpack serve --watch --port 3000 --config config/webpack.dev.js --env nodebug",
     "prod": "NODE_ENV=production webpack --config config/webpack.prod.js",
     "start": "npm run dev",
     "test": "elm-test"
