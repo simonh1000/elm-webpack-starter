@@ -6,6 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Http exposing (Error(..))
 import Json.Decode as Decode
+import Page
 
 
 
@@ -133,10 +134,7 @@ view model =
                 ]
             ]
         , p [] [ text "Then make a change to the source code and see how the state is retained after recompilation." ]
-        , p []
-            [ text "And now don't forget to add a star to the Github repo "
-            , a [ href "https://github.com/simonh1000/elm-webpack-starter" ] [ text "elm-webpack-starter" ]
-            ]
+        , Page.view
         ]
 
 

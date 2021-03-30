@@ -32,7 +32,7 @@
     "elm-format": "^0.8.4",
     "elm-hot-webpack-loader": "^1.1.7",
     "elm-test": "^0.19.1-revision4",
-    "elm-webpack-loader": "^7.0.1",
+    "elm-webpack-loader": "^8.0.0",
     "file-loader": "^6.2.0",
     "google-closure-compiler": "^20201102.0.1",
     "html-webpack-plugin": "^5.0.0-beta.5",
