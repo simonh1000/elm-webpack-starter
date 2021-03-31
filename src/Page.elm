@@ -1,9 +1,12 @@
 module Page exposing (..)
 
-import Html exposing (a, p, text)
+{- This is just a subpage to check that the watchers for recompiling work -}
+
+import Html exposing (Html, a, p, text)
 import Html.Attributes exposing (class, href)
 
 
+view : Html msg
 view =
     p []
         [ text "And now don't forget to add a star to the Github repo "
