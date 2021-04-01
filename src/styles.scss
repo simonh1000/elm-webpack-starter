@@ -1,13 +1,6 @@
-@import '~purecss/build/pure.css';
 
 body {
-    background-color: #ddd;
     margin-top: 20px;
-}
-.container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 header {
     display: flex;
@@ -21,3 +14,12 @@ header {
 button {
     margin-right: 15px;
 }
+
+.icon {
+    display: inline-block;
+    background-image: url("./assets/images/logo.png");
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+}
+
