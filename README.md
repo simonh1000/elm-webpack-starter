@@ -1,8 +1,8 @@
-# Elm 0.19.1 + Tailwind, built using Webpack 5
+# Elm 0.19.1 with Webpack 4, Hot Reloading & Babel 7
 
 [![CircleCI](https://circleci.com/gh/simonh1000/elm-webpack-starter.svg?style=svg)](https://circleci.com/gh/simonh1000/elm-webpack-starter)
 
-Elm dev environment with hot-loading (i.e. state is retained as you edit your code - Hot Module Reloading, HMR). I use this daily for my professional work.
+Elm dev environment with hot-loading (i.e. state is retained as you edit your code - Hot Module Reloading, HMR)). I use this daily for my professional work. Like elm-community/elm-webpack-starter but using Webpack 4.
 
 ## Installation
 
@@ -17,20 +17,18 @@ $ cd new-project
 $ npm install
 ```
 
-**Note** This starter is formatted with [elm-format globally](https://github.com/avh4/elm-format#installation-), which you will also want to install. 
-
 ## Developing
 
 Start with Elm debug tool with either
 ```sh
-$ npm start  (== npm run dev)
-# or for development without the Elm debugger
-$ npm run dev --nodebug
+$ npm start
+or
+$ npm start --nodebug
 ```
 
-The `--nodebug` flag removes the Elm debug tool. This can be valuable when your model becomes very large.
+the `--nodebug` removes the Elm debug tool. This can become valuable when your model becomes very large.
 
-Open http://localhost:3000 and start modifying the code in /src.  
+Open http://localhost:3000 and start modifying the code in /src.  **Note** that this starter expects you have installed [elm-format globally](https://github.com/avh4/elm-format#installation-). 
 
 An example using Routing is provided in the `navigation` branch
 
@@ -45,13 +43,6 @@ npm run prod
 ## Static assets
 
 Just add to `src/assets/` and the production build copies them to `/dist`
-
-## Tailwind
-
-This template also comes with [Tailwind](https://tailwindcss.com/) setup by default. That's a burden off of you if you want to use it - which I recommend -
-but it is easy to remove otherwise - remove the two files with tailwind in their name and remove the references in
-the config directory.
-
 
 ## Testing
 
@@ -91,8 +82,6 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
- - 4.0.0 - Rewrite for Webpack 5 & Tailwind
- - 3.11.0 - Webpack 5, elm-webpack-loader 7
  - 3.10.4 - Use better webpack defaults in dev mode
  - 3.10.0 - Css minify
  - 3.9.3 - Update deps
