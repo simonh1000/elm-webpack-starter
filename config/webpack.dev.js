@@ -1,24 +1,29 @@
 const path = require('path');
 
-const { merge } = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 
 const dev = {
     mode: 'development',
     devServer: {
-        inline: true,
-        hot: true,
-        stats: "errors-only",
-        contentBase: path.join(__dirname, "../src/assets"),
-        publicPath: "/",
+        hot: "only",
+        client: {
+            logging: "info"
+        },
+        static: {directory: path.join(__dirname, "../src/assets")},
+        devMiddleware: {
+            publicPath: "/",
+            stats: "errors-only"
+        },
         historyApiFallback: true,
         // feel free to delete this section if you don't need anything like this
-        before(app) {
+        onBeforeSetupMiddleware: function (devServer) {
             // on port 3000
-            app.get("/test", function (req, res) {
-                res.json({result: "OK"});
+            devServer.app.get("/test", function (req, res) {
+                res.json({result: "You reached the dev server"});
             });
+
         }
     },
 };

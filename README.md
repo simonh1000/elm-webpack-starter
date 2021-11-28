@@ -14,17 +14,20 @@ With npm
 ```sh
 $ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
 $ cd new-project
-$ npm install
+$ npm install --legacy-peer-deps
 ```
 
-**Note** This starter is formatted with [elm-format globally](https://github.com/avh4/elm-format#installation-), which you will also want to install. 
+**Notes** 
+
+- You need `--legacy-peer-deps` pending updates to the Elm dependencies so that they all work with Webpack 5 
+- This starter is formatted with [elm-format globally](https://github.com/avh4/elm-format#installation-), which you will also want to install. 
 
 ## Developing
 
 Start with Elm debug tool with either
 ```sh
 $ npm start  (== npm run dev)
-# or for development without the Elm debugger
+# or 
 $ npm run dev --nodebug
 ```
 
@@ -32,7 +35,7 @@ The `--nodebug` flag removes the Elm debug tool. This can be valuable when your 
 
 Open http://localhost:3000 and start modifying the code in /src.  
 
-An example using Routing is provided in the `navigation` branch
+~~An example using Routing is provided in the `navigation` branch~~
 
 ## Production
 
