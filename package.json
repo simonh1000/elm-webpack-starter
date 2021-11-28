@@ -1,59 +1,59 @@
 {
-  "author": "Simon Hampton",
-  "name": "elm-webpack-starter",
-  "version": "4.0.0",
-  "description": "Elm 0.19 starter with Webpack 5 & Tailwind",
-  "main": "index.js",
-  "scripts": {
-    "analyse": "elm-analyse -s -p 3001 -o",
-    "build": "webpack",
-    "dev": "webpack serve --port 3000 --config config/webpack.dev.js",
-    "nodebug": "webpack serve --port 3000 --config config/webpack.dev.js --env nodebug",
-    "prod": "NODE_ENV=production webpack --config config/webpack.prod.js",
-    "start": "npm run dev",
-    "test": "elm-test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/simonh1000/elm-webpack-starter.git"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "autoprefixer": "^10.4.0",
-    "babel-loader": "^8.2.3",
-    "clean-webpack-plugin": "^4.0.0",
-    "copy-webpack-plugin": "^10.0.0",
-    "css-loader": "^6.5.1",
-    "elm": "^0.19.1-5",
-    "elm-analyse": "^0.16.5",
-    "elm-format": "^0.8.5",
-    "elm-hot-webpack-loader": "^1.1.8",
-    "elm-test": "^0.19.1-revision7",
-    "elm-webpack-loader": "^8.0.0",
-    "file-loader": "^6.2.0",
-    "google-closure-compiler": "^20211107.0.0",
-    "html-webpack-plugin": "^5.5.0",
-    "mini-css-extract-plugin": "^2.4.5",
-    "postcss": "^8.4.4",
-    "postcss-cli": "^9.0.2",
-    "postcss-loader": "^6.2.1",
-    "resolve-url-loader": "^4.0.0",
-    "sass": "^1.43.5",
-    "sass-loader": "^12.3.0",
-    "style-loader": "^3.3.1",
-    "tailwindcss": "^2.2.19",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0",
-    "webpack-merge": "^5.8.0"
-  },
-  "engines": {
-    "node": ">=12"
-  },
-  "prettier": {
-    "tabWidth": 4
-  }
+    "author": "Simon Hampton",
+    "name": "elm-webpack-starter",
+    "version": "4.0.0",
+    "description": "Elm 0.19 starter with Webpack 5 & Tailwind",
+    "main": "index.js",
+    "scripts": {
+        "analyse": "elm-analyse -s -p 3001 -o",
+        "build": "webpack",
+        "dev": "webpack serve --port 3000 --config config/webpack.dev.js",
+        "nodebug": "webpack serve --port 3000 --config config/webpack.dev.js --env nodebug",
+        "prod": "NODE_ENV=production webpack --config config/webpack.prod.js",
+        "start": "npm run dev",
+        "test": "elm-test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/simonh1000/elm-webpack-starter.git"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.4",
+        "autoprefixer": "^10.4.0",
+        "babel-loader": "^8.2.3",
+        "clean-webpack-plugin": "^4.0.0",
+        "copy-webpack-plugin": "^10.0.0",
+        "css-loader": "^6.5.1",
+        "elm": "^0.19.1-5",
+        "elm-analyse": "^0.16.5",
+        "elm-format": "^0.8.5",
+        "elm-hot-webpack-loader": "^1.1.8",
+        "elm-test": "^0.19.1-revision7",
+        "elm-webpack-loader": "^8.0.0",
+        "file-loader": "^6.2.0",
+        "google-closure-compiler": "^20211107.0.0",
+        "html-webpack-plugin": "^5.5.0",
+        "mini-css-extract-plugin": "^2.4.5",
+        "postcss": "^8.4.4",
+        "postcss-cli": "^9.0.2",
+        "postcss-loader": "^6.2.1",
+        "resolve-url-loader": "^4.0.0",
+        "sass": "^1.43.5",
+        "sass-loader": "^12.3.0",
+        "style-loader": "^3.3.1",
+        "tailwindcss": "^2.2.19",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.64.4",
+        "webpack-cli": "^4.9.1",
+        "webpack-dev-server": "^4.6.0",
+        "webpack-merge": "^5.8.0"
+    },
+    "engines": {
+        "node": ">=12"
+    },
+    "prettier": {
+        "tabWidth": 4
+    }
 }
