@@ -2,22 +2,20 @@ const {merge} = require('webpack-merge');
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 // JS minification
-const ClosurePlugin = require("closure-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 // Production CSS assets - separate, minimised file
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const common = require('./webpack.common.js');
 
 const prod = {
     mode: 'production',
     optimization: {
+        minimize: true,
         minimizer: [
-            new ClosurePlugin(
-                {mode: "STANDARD"},
-                {}
-            ),
-            new OptimizeCSSAssetsPlugin({})
+            new TerserPlugin(),
+            new CssMinimizerPlugin(),
         ]
     },
     plugins: [
@@ -44,7 +42,7 @@ const prod = {
             {
                 test: /\.(sa|sc|c)ss$/i,
                 use: [
-                    {loader: MiniCssExtractPlugin.loader, options: {publicPath: ""}},
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     {
                         loader: "postcss-loader",
