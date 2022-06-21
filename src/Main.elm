@@ -149,7 +149,7 @@ main =
         , update = update
         , view =
             \m ->
-                { title = "[title] Elm 0.19 starter"
+                { title = "[title] Elm 0.19.1 starter"
                 , body = [ view m ]
                 }
         , subscriptions = \_ -> Sub.none

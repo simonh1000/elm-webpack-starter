@@ -30,7 +30,7 @@ module.exports = (withDebug) => {
                 {
                     test: /\.elm$/,
                     use: [
-                        {loader: "elm-hot-webpack-loader"},
+                        {loader: "elm-reloader"},
                         {
                             loader: "elm-webpack-loader",
                             options: {
