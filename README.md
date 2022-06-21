@@ -14,12 +14,11 @@ With npm
 ```sh
 $ git clone git@github.com:simonh1000/elm-webpack-starter.git new-project
 $ cd new-project
-$ npm install --legacy-peer-deps
+$ npm install
 ```
 
 **Notes** 
 
-- You need `--legacy-peer-deps` pending updates to the Elm dependencies so that they all work with Webpack 5 
 - This starter is formatted with [elm-format globally](https://github.com/avh4/elm-format#installation-), which you will also want to install. 
 
 ## Developing
@@ -87,6 +86,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 4.0.0 - Webpack 5, Tailwind, ...
  - 3.10.4 - Use better webpack defaults in dev mode
  - 3.10.0 - Css minify
  - 3.9.3 - Update deps
