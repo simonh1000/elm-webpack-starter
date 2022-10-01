@@ -1,4 +1,4 @@
-# Elm 0.19.1 with Webpack 4, Hot Reloading & Babel 7
+# Elm 0.19.1 with Webpack 5, Hot Reloading & Tailwind
 
 [![CircleCI](https://circleci.com/gh/simonh1000/elm-webpack-starter.svg?style=svg)](https://circleci.com/gh/simonh1000/elm-webpack-starter)
 
@@ -17,6 +17,10 @@ $ cd new-project
 $ npm install
 ```
 
+**Notes** 
+
+- This starter is formatted with [elm-format globally](https://github.com/avh4/elm-format#installation-), which you will also want to install. 
+
 ## Developing
 
 Start with Elm debug tool with either
@@ -29,8 +33,6 @@ $ npm start --nodebug
 the `--nodebug` removes the Elm debug tool. This can become valuable when your model becomes very large.
 
 Open http://localhost:3000 and start modifying the code in /src.  **Note** that this starter expects you have installed [elm-format globally](https://github.com/avh4/elm-format#installation-). 
-
-An example using Routing is provided in the `navigation` branch
 
 ## Production
 
@@ -82,6 +84,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
+ - 4.0.0  - Webpack 5, adds Tailwind support out of the box
  - 3.10.4 - Use better webpack defaults in dev mode
  - 3.10.0 - Css minify
  - 3.9.3 - Update deps
