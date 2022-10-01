@@ -34,8 +34,6 @@ the `--nodebug` removes the Elm debug tool. This can become valuable when your m
 
 Open http://localhost:3000 and start modifying the code in /src.  **Note** that this starter expects you have installed [elm-format globally](https://github.com/avh4/elm-format#installation-). 
 
-~~An example using Routing is provided in the `navigation` branch~~
-
 ## Production
 
 Build production assets (js and css together) with:
@@ -86,7 +84,7 @@ This starter includes [Babel](https://babeljs.io/) so you can directly use ES6 c
 
 ## Changelog
 
- - 4.0.0 - Webpack 5, Tailwind, ...
+ - 4.0.0  - Webpack 5, adds Tailwind support out of the box
  - 3.10.4 - Use better webpack defaults in dev mode
  - 3.10.0 - Css minify
  - 3.9.3 - Update deps
