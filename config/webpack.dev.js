@@ -18,12 +18,12 @@ const dev = {
         },
         historyApiFallback: true,
         // feel free to delete this section if you don't need anything like this
-        onBeforeSetupMiddleware: function (devServer) {
+        setupMiddlewares: (middlewares, devServer) => {
             // on port 3000
             devServer.app.get("/test", function (req, res) {
                 res.json({result: "You reached the dev server"});
             });
-
+            return middlewares;
         }
     },
 };
