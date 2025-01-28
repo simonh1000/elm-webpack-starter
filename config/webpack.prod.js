@@ -55,7 +55,8 @@ const prod = {
                             },
                         }
                     }, "sass-loader"
-                ]
+                ],
+                sideEffects: true,
             }
         ]
     }
